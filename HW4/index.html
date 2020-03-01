@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vampires & Humans</title>
+        <meta charset = "utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <style>
+            .top-line {
+                border-top: 5px solid black;
+            }
+            .bot-line {
+                border-bottom: 5px solid black;
+            }
+            .send-right {
+                text-align:right;
+            }
+        </style>
+
+        <script type="text/javascript">
+
+            $(document).ready(function() {
+                // Load the Visualization API and the corechart package.
+                google.charts.load('current', {'packages':['corechart']});
+                // Set a callback to run when the Google Visualization API is loaded.
+                google.charts.setOnLoadCallback(drawChart);
+            });
+
+            function addStudent() {
+                let firstName = $("#firstName").val();
+                let lastName = $("#lastName").val();
+                let garlic = ($("#garlic_yes").checked !== false) ? true : false;
+                let shadow = ($("#shadow_yes").checked !== false) ? true : false;
+                let accent = ($("#accent_yes").checked !== false) ? true : false;
+                console.log(firstName);
+                console.log(lastName);
+                console.log("Garlic: " + garlic.toString());
+                console.log("Shadow: " + shadow.toString());
+                console.log("Accent: " + accent.toString());
+            }
+
+            function removeStudent() {
+
+            }
+
+            $("#viewMode").on("change", function() {
+                console.log("changed");
+                let newView = this.value;
+                console.log(newView);
+
+
+            })
+
+            function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows([
+                ['Mushrooms', 3],
+                ['Onions', 1],
+                ['Olives', 1],
+                ['Zucchini', 1],
+                ['Pepperoni', 2]
+            ]);
+
+            var options = {'title':'How Much Pizza I Ate Last Night',
+                            'width':400,
+                            'height':300};
+
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <div class = "container bot-line">
+            <h1>Students & Vampires</h1>
+            <div class="dropdown send-right">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="viewMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    View Mode
+                </button>
+                <div class="dropdown-menu" aria-labelledby="viewMode">
+                    <a class="dropdown-item" href="#">Pie Chart</a>
+                    <a class="dropdown-item" href="#">Table</a>
+                    <a class="dropdown-item" href="#">Bar Graph</a>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-md-12">
+                    <div id="chart_div"></div>
+                    <div id = "table_div"></div>
+                    <div id = "bargraph_div"></div>
+                </div>
+            </div>
+        </div>
+        <div class = "container top-line">
+            <div class = "row">
+                <div class = "col-md-6">
+                    <h2>Enter the Student's Information</h2>
+                </div>
+            </div>
+            <br>
+            <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder = "John">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder = "Smith">
+                  </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="form-check">
+                            <b>Does the student like garlic?</b><br>
+                            <div class="radio">
+                                <label><input type="radio" name="garlic" id="garlic_yes" checked>Yes</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="garlic" id="garlic_no">No</label>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="form-check">
+                            <b>Does the student cast a shadow?</b><br>
+                            <div class="radio">
+                                <label><input type="radio" name="shadow" id="shadow_yes" checked>Yes</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="shadow" id="shadow_no">No</label>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="form-check">
+                            <b>Does the student have a Transylvanian accent?</b><br>
+                            <div class="radio">
+                                <label><input type="radio" name="accent" id="accent_yes" checked>Yes</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="accent" id="accent_no">No</label>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            </form>
+            <button class="btn btn-primary" onclick = "addStudent();">Submit</button>
+
+        </div>
+    </body>
+</html>
