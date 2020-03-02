@@ -1,6 +1,6 @@
 # CSCI_6710_Team5
 
-Lorem ipsum dolor sit amet, ne pro erat omnis consulatu.
+This is the repository for Team 5 of the Spring 2020 semester class CSCI 6710 (Web Applications Development).
 
 ## Installation
 

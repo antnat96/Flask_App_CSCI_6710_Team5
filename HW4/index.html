@@ -11,70 +11,115 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
         <style>
-            .top-line {
-                border-top: 5px solid black;
-            }
             .bot-line {
                 border-bottom: 5px solid black;
             }
+            .hold-height {
+                min-height: 600px !important;
+            }
             .send-right {
                 text-align:right;
+            }
+            .top-line {
+                border-top: 5px solid black;
+            }
+            .top-pad {
+                padding-top: 30px;
             }
         </style>
 
         <script type="text/javascript">
 
             $(document).ready(function() {
-                // Load the Visualization API and the corechart package.
+
+                // Load the Google Charts packages & set the callback
                 google.charts.load('current', {'packages':['corechart']});
-                // Set a callback to run when the Google Visualization API is loaded.
                 google.charts.setOnLoadCallback(drawChart);
+
+                // Draw the chart. The parameter defines the type of chart to draw.
+                function drawChart(typeOfChart = "pie_select") {
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string', 'Topping');
+                    data.addColumn('number', 'Slices');
+                    data.addRows([
+                        ['Mushrooms', 3],
+                        ['Onions', 1],
+                        ['Olives', 1],
+                        ['Zucchini', 1],
+                        ['Pepperoni', 2]
+                    ]);
+
+                    var options = {'title':'How Much Pizza I Ate Last Night',
+                                    'width':600,
+                                    'height':600};
+
+                    if (typeOfChart === "bar_select") {
+                        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+                    }
+                    else {
+                        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                    }
+
+                    $("#chart_div").removeClass("d-none");
+                    $("#table_div").addClass("d-none");
+
+                    chart.draw(data, options);
+                }
+                
+                $("#add-student-button").on("click", function() {
+                    addStudent();
+                })
+            
+                function addStudent() {
+                    let firstName = $("#firstName").val();
+                    let lastName = $("#lastName").val();
+                    let garlic = ($("#garlic_yes").is(":checked") === true) ? true : false;
+                    let shadow = ($("#shadow_yes").is(":checked") === true) ? true : false;
+                    let accent = ($("#accent_yes").is(":checked") === true) ? true : false;
+
+                    var row = document.getElementById("students_table").insertRow(1);
+                    var idCell = row.insertCell(0);
+                    var firstNameCell = row.insertCell(1);
+                    var lastNameCell = row.insertCell(2);
+                    var garlicCell = row.insertCell(3);
+                    var shadowCell = row.insertCell(4);
+                    var accentCell = row.insertCell(5);
+                    var deleteCell = row.insertCell(6);
+
+                    idCell.innerHTML = "";
+                    firstNameCell.innerHTML = firstName;
+                    lastNameCell.innerHTML = lastName;
+                    garlicCell.innerHTML = (garlic === true) ? "Yes" : "No";
+                    shadowCell.innerHTML = (shadow === true) ? "Yes" : "No";
+                    accentCell.innerHTML = (accent === true) ? "Yes" : "No";
+                    deleteCell.innerHTML = "<button class= 'remove-student-button btn btn-primary'>Delete</button>";
+
+                }         
+
+                $(".remove-student-button").on("click", function() {
+
+                })
+
+                $(document).on('click', '.remove-student-button', function(){
+                    let row = $(this).closest('tr').index();
+                    removeStudentFromTable(row);
+                });
+
+                function removeStudentFromTable(row) {
+                    (row !== null && row !== undefined) ? document.getElementById("students_table").deleteRow(row) : window.alert("Oops! Having issues removing that student.");
+                }
+
+                $("#select_view > a").on("click", function() {
+                    let typeOfChart = $(this).attr("id");
+                    (typeOfChart === "table_select") ? showTable() : drawChart(typeOfChart);
+                })
+
+                function showTable() {
+                    $("#chart_div").addClass("d-none");
+                    $("#table_div").removeClass("d-none");
+                }
+
             });
-
-            function addStudent() {
-                let firstName = $("#firstName").val();
-                let lastName = $("#lastName").val();
-                let garlic = ($("#garlic_yes").checked !== false) ? true : false;
-                let shadow = ($("#shadow_yes").checked !== false) ? true : false;
-                let accent = ($("#accent_yes").checked !== false) ? true : false;
-                console.log(firstName);
-                console.log(lastName);
-                console.log("Garlic: " + garlic.toString());
-                console.log("Shadow: " + shadow.toString());
-                console.log("Accent: " + accent.toString());
-            }
-
-            function removeStudent() {
-
-            }
-
-            $("#viewMode").on("change", function() {
-                console.log("changed");
-                let newView = this.value;
-                console.log(newView);
-
-
-            })
-
-            function drawChart() {
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Topping');
-            data.addColumn('number', 'Slices');
-            data.addRows([
-                ['Mushrooms', 3],
-                ['Onions', 1],
-                ['Olives', 1],
-                ['Zucchini', 1],
-                ['Pepperoni', 2]
-            ]);
-
-            var options = {'title':'How Much Pizza I Ate Last Night',
-                            'width':400,
-                            'height':300};
-
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-            }
 
         </script>
     </head>
@@ -86,17 +131,41 @@
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="viewMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     View Mode
                 </button>
-                <div class="dropdown-menu" aria-labelledby="viewMode">
-                    <a class="dropdown-item" href="#">Pie Chart</a>
-                    <a class="dropdown-item" href="#">Table</a>
-                    <a class="dropdown-item" href="#">Bar Graph</a>
+                <div id = "select_view" class="dropdown-menu" aria-labelledby="viewMode">
+                    <a id = "pie_select" class="dropdown-item">Pie Chart</a>
+                    <a id = "table_select" class="dropdown-item">Table</a>
+                    <a id = "bar_select" class="dropdown-item">Bar Graph</a>
                 </div>
             </div>
             <div class = "row">
-                <div class = "col-md-12">
-                    <div id="chart_div"></div>
-                    <div id = "table_div"></div>
-                    <div id = "bargraph_div"></div>
+                <div class = "col-md-12 hold-height">
+                    <div id= "chart_div"></div>
+                    <div id = "table_div" class = "top-pad d-none">
+                        <table id = "students_table" class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Garlic?</th>
+                                <th scope="col">Shadow?</th>
+                                <th scope="col">Accent?</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td>John</td>
+                                    <td>Smith</td>
+                                    <td>Yes</td>
+                                    <td>No</td>
+                                    <td>No</td>
+                                    <td><button class= "remove-student-button btn btn-primary">Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -158,7 +227,7 @@
                     </div>                
                 </div>
             </form>
-            <button class="btn btn-primary" onclick = "addStudent();">Submit</button>
+            <button id = "add-student-button" class="btn btn-primary">Add Student</button>
 
         </div>
     </body>
