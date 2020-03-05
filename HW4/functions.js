@@ -46,6 +46,7 @@ $(document).ready(function() {
         let garlic = ($("#garlic_yes").is(":checked") === true) ? true : false;
         let shadow = ($("#shadow_yes").is(":checked") === true) ? true : false;
         let complexion = ($("#complexion_yes").is(":checked") === true) ? true : false;
+        let accent = ($("#accent_yes").is(":checked") === true) ? true : false;
 
         // Add the information to the table
         var row = document.getElementById("students_table").insertRow(1);
@@ -55,13 +56,15 @@ $(document).ready(function() {
         var garlicCell = row.insertCell(3);
         var shadowCell = row.insertCell(4);
         var complexionCell = row.insertCell(5);
-        var deleteCell = row.insertCell(6);
+        var accentCell = row.insertCell(6);
+        var deleteCell = row.insertCell(7);
         idCell.innerHTML = "";
         firstNameCell.innerHTML = firstName;
         lastNameCell.innerHTML = lastName;
         garlicCell.innerHTML = (garlic === true) ? "Yes" : "No";
         shadowCell.innerHTML = (shadow === true) ? "Yes" : "No";
         complexionCell.innerHTML = (complexion === true) ? "Yes" : "No";
+        accentCell.innerHTML = (accent === true) ? "Yes" : "No";
         deleteCell.innerHTML = "<button class= 'remove-student-button btn btn-primary'>Delete</button>";
     }         
 
