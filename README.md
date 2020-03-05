@@ -16,4 +16,4 @@ Lorem ipsum dolor sit amet, ne pro erat omnis consulatu. Usu ad dolor iudicabit 
 
 ## License
 
-Lorem ipsum dolor sit amet, ne pro erat omnis consulatu.
+MIT License - see LICENSE.md

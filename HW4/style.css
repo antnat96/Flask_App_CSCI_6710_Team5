@@ -1,0 +1,18 @@
+body {
+    background-color: silver;
+}
+.bot-line {
+    border-bottom: 5px solid black;
+}
+.hold-height {
+    min-height: 600px !important;
+}
+.send-right {
+    text-align:right;
+}
+.top-line {
+    border-top: 5px solid black;
+}
+.top-pad {
+    padding-top: 30px;
+}
