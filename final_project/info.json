@@ -1,0 +1,76 @@
+{
+    "flights" : [
+        {
+            "id":"0001",
+            "aircraft": {
+                "type": "C-17",
+                "tail_num": "CLT-1223"
+            },
+            "departure" : {
+                "airport_name": "Charlotte-Douglas",
+                "city": "Charlotte",
+                "state": "North Carolina",
+                "country": "USA",
+                "time_local": "0520",
+                "time_zulu": "1020",
+                "date": "03-06-2020"
+            },
+            "arrival" : {
+                "airport_name": "LaGuardia",
+                "city": "Queens",
+                "state": "New York",
+                "country": "USA",
+                "time_local": "0720",
+                "time_zulu": "1220",
+                "date": "03-06-2020"
+            }
+        },
+        {
+            "id":"0002",
+            "aircraft": {
+                "type": "C-17",
+                "tail_num": "CLT-1223"
+            },
+            "departure" : {
+                "airport_name": "LaGuardia",
+                "city": "Queens",
+                "state": "New York",
+                "country": "USA",
+                "time_local": "0520",
+                "time_zulu": "1020",
+                "date": "03-07-2020"
+            },
+            "arrival" : {
+                "airport_name": "Charlotte-Douglas",
+                "city": "Charlotte",
+                "state": "North Carolina",
+                "country": "USA",
+                "time_local": "0720",
+                "time_zulu": "1220",
+                "date": "03-07-2020"
+            }
+        }
+    ],
+    "cargo" : [
+        {
+            "associated_flt_id":"0001",
+            "characteristics" : {
+                "description": "Two trucks. Some bags.",
+                "items": 7,
+                "weight_lbs": 9000,
+                "weight_kg": 4082,
+                "loader": "Anthony Natale"
+            }
+        },
+        {
+            "associated_flt_id":"0002",
+            "characteristics" : {
+                "description": "Bottled water pallets",
+                "items": 4,
+                "weight_lbs": 4500,
+                "weight_kg": 2041,
+                "loader": "Jared Mello"
+            }
+        }
+    ]
+}
