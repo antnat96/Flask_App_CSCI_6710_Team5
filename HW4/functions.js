@@ -71,7 +71,7 @@ $(document).ready(function() {
     // Handle the "Delete" button
     $(document).on('click', '.remove-student-button', function(){
         // Get the closest row element's index and delete it
-        let row = $(this).closest('tr').index() + 1;
+        let row = $(this).closest('tr').index();
         (row !== null && row !== undefined) ? document.getElementById("students_table").deleteRow(row) : window.alert("Oops! Having issues removing that student.");
     });
 
