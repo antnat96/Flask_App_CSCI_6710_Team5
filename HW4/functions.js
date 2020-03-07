@@ -1,3 +1,8 @@
+// Model option save the type of model user like to use to determine the result of the form
+var modelOption = "threshold_select";
+var vampires = 0;
+var humans = 0;
+
 $(document).ready(function() {
 
     // Load the Google Charts packages & set the callback
@@ -7,7 +12,7 @@ $(document).ready(function() {
     // Purpose: Draw the chart
     // Parameters: typeOfChart is the type of chart to draw, vampires and humans
     // is the number of each in the class, used to update the chart
-    function drawChart(typeOfChart = "pie_select", vampires = 2, humans = 2) {
+    function drawChart(typeOfChart = "pie_select") {
         // Add data to the chart
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Type of Person');
@@ -66,6 +71,22 @@ $(document).ready(function() {
         complexionCell.innerHTML = (complexion === true) ? "Yes" : "No";
         accentCell.innerHTML = (accent === true) ? "Yes" : "No";
         deleteCell.innerHTML = "<button class= 'remove-student-button btn btn-primary'>Delete</button>";
+
+        // model selection logic
+        if (modelOption == "threshold_select")
+        {
+            var score = 0;
+            if(shadow == false){score+=4}
+            if(complexion == true){score+=3}
+            if(garlic == false){score+=3}
+            if(accent == true){score+=3}
+            if(score > 6 ){vampires+=1}
+            else{humans+=1}
+        }
+        else if (modelOption == "random_select")
+        {
+            
+        }
     }         
 
     // Handle the "Delete" button
@@ -81,6 +102,11 @@ $(document).ready(function() {
         let typeOfChart = $(this).attr("id");
         // If table, show it, otherwise hide it and draw the appropriate chart
         (typeOfChart === "table_select") ? showTable() : drawChart(typeOfChart);
+    })
+
+    // Handle type of model used
+    $("#select_model > a").on("click", function(){
+        modelOption = $(this).attr("id");
     })
 
     function showTable() {
