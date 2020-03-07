@@ -41,6 +41,7 @@ $(document).ready(function() {
     // Handler for the "Add Student" button
     $("#add-student-button").on("click", function() {
         addStudent();
+        google.charts.setOnLoadCallback(drawChart);
     })
 
     // Purpose: Collect the student's information and add it to the table and chart information
