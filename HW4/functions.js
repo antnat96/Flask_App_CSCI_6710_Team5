@@ -75,7 +75,15 @@ $(document).ready(function() {
         }
         else if (modelOption == "random_select")
         {
-            
+            var randomGuess = Math.floor(Math.random() * (2 - 0) ) + 0
+            if(randomGuess == 0){
+                vampires+=1;
+                humanTf = false;
+            }
+            else{
+                humans+=1;
+                humanTf = true;
+            }
         }
 
         // Add the information to the table
