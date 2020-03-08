@@ -2,11 +2,11 @@
 Homework 4: Who is human/vampire?
 
 ## File Structure
-index.html: main html page
-other.html: hard code table items (delete later)
-functions.js: contain all javascript function that is use in index.html
-style.css: all style store in this  css file
-README.md: read me file
+index.html: main html page <br>
+other.html: hard code table items (delete later) <br>
+functions.js: contain all javascript function that is use in index.html <br>
+style.css: all style store in this  css file <br>
+README.md: read me file <br>
 
 ## Installation
 No installation is require.
