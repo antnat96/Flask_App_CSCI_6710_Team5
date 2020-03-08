@@ -1,9 +1,8 @@
-// Model option save the type of model user like to use to determine the result of the form
-var modelOption = "threshold_select";
-var vampires = 0;
-var humans = 0;
-
 $(document).ready(function() {
+    // Model option save the type of model user like to use to determine the result of the form
+    var modelOption = "threshold_select";
+    var vampires = 0;
+    var humans = 0;
 
     // Load the Google Charts packages & set the callback
     google.charts.load('current', {'packages':['corechart']});
@@ -46,6 +45,9 @@ $(document).ready(function() {
 
     // Purpose: Collect the student's information and add it to the table and chart information
     function addStudent() {
+        // humanTf: true = human, false = vampire
+        var humanTf = false;
+
         // Get the student's information
         let firstName = $("#firstName").val();
         let lastName = $("#lastName").val();
@@ -53,6 +55,28 @@ $(document).ready(function() {
         let shadow = ($("#shadow_yes").is(":checked") === true) ? true : false;
         let complexion = ($("#complexion_yes").is(":checked") === true) ? true : false;
         let accent = ($("#accent_yes").is(":checked") === true) ? true : false;
+
+        // model selection logic
+        if (modelOption == "threshold_select")
+        {
+            var score = 0;
+            if(shadow == false){score+=4}
+            if(complexion == true){score+=3}
+            if(garlic == false){score+=3}
+            if(accent == true){score+=3}
+            if(score > 6 ){
+                vampires+=1;
+                humanTf = false;
+            }
+            else{
+                humans+=1;
+                humanTf = true;
+            }
+        }
+        else if (modelOption == "random_select")
+        {
+            
+        }
 
         // Add the information to the table
         var row = document.getElementById("students_table").insertRow(1);
@@ -63,7 +87,8 @@ $(document).ready(function() {
         var shadowCell = row.insertCell(4);
         var complexionCell = row.insertCell(5);
         var accentCell = row.insertCell(6);
-        var deleteCell = row.insertCell(7);
+        var vampireOrHuman = row.insertCell(7);
+        var deleteCell = row.insertCell(8);
         idCell.innerHTML = "";
         firstNameCell.innerHTML = firstName;
         lastNameCell.innerHTML = lastName;
@@ -71,29 +96,22 @@ $(document).ready(function() {
         shadowCell.innerHTML = (shadow === true) ? "Yes" : "No";
         complexionCell.innerHTML = (complexion === true) ? "Yes" : "No";
         accentCell.innerHTML = (accent === true) ? "Yes" : "No";
+        if(humanTf){vampireOrHuman.innerHTML="Human"}
+        else{vampireOrHuman.innerHTML="Vampire"}
         deleteCell.innerHTML = "<button class= 'remove-student-button btn btn-primary'>Delete</button>";
 
-        // model selection logic
-        if (modelOption == "threshold_select")
-        {
-            var score = 0;
-            if(shadow == false){score+=4}
-            if(complexion == true){score+=3}
-            if(garlic == false){score+=3}
-            if(accent == true){score+=3}
-            if(score > 6 ){vampires+=1}
-            else{humans+=1}
-        }
-        else if (modelOption == "random_select")
-        {
-            
-        }
+        
     }         
 
     // Handle the "Delete" button
     $(document).on('click', '.remove-student-button', function(){
         // Get the closest row element's index and delete it
+        var table = document.getElementById("students_table");
         let row = $(this).closest('tr').index();
+        var vampireOrHuamnCell = table.rows[row].cells[7].innerHTML;
+        if(vampireOrHuamnCell == "Human"){humans-=1}
+        else{vampires-=1}
+        //console.log(document.getElementById("students_table").rows[1].innerHTML);
         (row !== null && row !== undefined) ? document.getElementById("students_table").deleteRow(row) : window.alert("Oops! Having issues removing that student.");
     });
 
