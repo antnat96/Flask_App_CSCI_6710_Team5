@@ -145,6 +145,10 @@ $(document).ready(function() {
     $("#select_view > a").on("click", function() {
         // Get the selected type of chart
         let typeOfChart = $(this).attr("id");
+        // Change the select box text to correspond with the current chart
+        if (typeOfChart === "table_select") { $("#view_mode_button").html("Table"); }
+        if (typeOfChart === "pie_select") { $("#view_mode_button").html("Pie Chart"); }
+        if (typeOfChart === "bar_select") { $("#view_mode_button").html("Bar Chart"); }
         // If table, show it, otherwise hide it and draw the appropriate chart
         (typeOfChart === "table_select") ? showTable() : drawChart(typeOfChart);
     })
@@ -152,6 +156,11 @@ $(document).ready(function() {
     // Handle type of model used
     $("#select_model > a").on("click", function(){
         modelOption = $(this).attr("id");
+        console.log(modelOption);
+        // Change the select box text to correspond with the current model
+        if (modelOption === "threshold_select") { $("#model_select_button").html("Threshold-Based Model"); }
+        if (modelOption === "random_select") { $("#model_select_button").html("Random Model"); }
+
     })
 
     function showTable() {

@@ -28,7 +28,7 @@
                 </div>
                 <div class = "col-md-4">
                     <div class="dropdown send-right">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="viewMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button id = "view_mode_button" class="btn btn-secondary dropdown-toggle" type="button" id="viewMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             View Mode
                         </button>
                         <div id = "select_view" class="dropdown-menu" aria-labelledby="viewMode">
@@ -65,10 +65,14 @@
         <div class = "container top-line">
             <div class = "row">
                 <div class = "col-md-11">
-                    <h2>Enter the Student's Information</h2>
+                    <h2 class = "title-padding">Enter the Student's Information</h2>
+                    <p>
+                        You may choose the threshold-based or random determination models by selecting the dropdown below.<br/>
+                        The threshold-based model is the default.
+                    </p>
                 </div>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="modelMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button id = "model_select_button" class="btn btn-secondary dropdown-toggle" type="button" id="modelMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Models
                     </button>
                     <div id = "select_model" class="dropdown-menu" aria-labelledby="viewMode">
@@ -90,7 +94,7 @@
                   </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-6">
                         <div class="form-check">
                             <b>Does the student like garlic?</b><br>
                             <div class="radio">
@@ -100,23 +104,8 @@
                                 <label><input type="radio" name="garlic" id="garlic_no">No</label>
                             </div>
                         </div>
-                    </div>                
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <div class="form-check">
-                            <b>Does the student cast a shadow?</b><br>
-                            <div class="radio">
-                                <label><input type="radio" name="shadow" id="shadow_yes" checked>Yes</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="shadow" id="shadow_no">No</label>
-                            </div>
-                        </div>
-                    </div>                
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
+                    </div> 
+                    <div class="form-group col-md-6">
                         <div class="form-check">
                             <b>Is the student pale?</b><br>
                             <div class="radio">
@@ -129,7 +118,18 @@
                     </div>                
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-6">
+                        <div class="form-check">
+                            <b>Does the student cast a shadow?</b><br>
+                            <div class="radio">
+                                <label><input type="radio" name="shadow" id="shadow_yes" checked>Yes</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="shadow" id="shadow_no">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
                         <div class="form-check">
                             <b>Does the student have a Transylvanian Accent?</b><br>
                             <div class="radio">
@@ -139,11 +139,10 @@
                                 <label><input type="radio" name="accent" id="accent_no">No</label>
                             </div>
                         </div>
-                    </div>                
-                </div>                
+                    </div>                  
+                </div>            
             </form>
             <button id = "add-student-button" class="btn btn-primary">Add Student</button>
-
         </div>
     </body>
 </html>
