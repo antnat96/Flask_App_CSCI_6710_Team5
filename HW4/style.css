@@ -1,5 +1,12 @@
 body {
-    background-color: silver;
+    background-color: lightcyan;
+    padding: 20px;
+}
+h2{
+	text-align: center;
+}
+p {
+	font-weight: bolder;
 }
 .bot-line {
     border-bottom: 5px solid black;
