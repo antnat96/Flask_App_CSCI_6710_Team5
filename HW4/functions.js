@@ -49,6 +49,7 @@ $(document).ready(function() {
         else {
             addStudent();
             google.charts.setOnLoadCallback(drawChart);
+            updateIdNumbers();
         }
     })
 
@@ -137,8 +138,13 @@ $(document).ready(function() {
         var vampireOrHuamnCell = table.rows[row].cells[7].innerHTML;
         if(vampireOrHuamnCell == "Human"){humans-=1}
         else{vampires-=1}
-        //console.log(document.getElementById("students_table").rows[1].innerHTML);
-        (row !== null && row !== undefined) ? document.getElementById("students_table").deleteRow(row) : window.alert("Oops! Having issues removing that student.");
+        if (row !== null && row !== undefined) {
+            document.getElementById("students_table").deleteRow(row);
+            updateIdNumbers();
+         }
+         else {
+            window.alert("Oops! Having issues removing that student.");
+         } 
     });
 
     // Handle the view mode change
@@ -159,12 +165,18 @@ $(document).ready(function() {
         // Change the select box text to correspond with the current model
         if (modelOption === "threshold_select") { $("#model_select_button").html("Threshold-Based Model"); }
         if (modelOption === "random_select") { $("#model_select_button").html("Random Model"); }
-
     })
 
     function showTable() {
         $("#chart_div").addClass("d-none");
         $("#table_div").removeClass("d-none");
+    }
+
+    // Loops through table to update the ID numbers of the rows
+    function updateIdNumbers() {
+        for (let i = 1, row; row = $("#students_table")[0].rows[i]; i++) {
+            $("#students_table")[0].rows[i].cells[0].innerHTML = i.toString();
+        }
     }
 
 });
