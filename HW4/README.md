@@ -11,7 +11,7 @@ README.md: This file. <br>
 No installation is required.
 
 ## Usage
-Open index.html in a browser of your choice.
+Clone repository and open index.html in a browser of your choice.
 
 ## Contributors
 This project was created by Huan-Yun Chen (Oliver), Jared Mello, and Anthony Natale.
