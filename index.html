@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vampires & Humans</title>
+        <meta charset = "utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--Bootstrap, jQuery, Google Charts-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="functions.js"></script>
+    </head>
+
+    <body>
+        <div class = "container bot-line">
+            <h1>Vampires & Students</h1>
+            <div>
+                <p>
+                    This website is for helping determine if a classmate is a vampire.<br/>
+                    We know that Vampires can be found through four main factors, and we have a list below.<br/>
+                    The four main factors that prove that someone is a vampire are a dislike of garlic, a lack of a shadow, a pale complexion, and a Transylvanian accent.<br/>
+                </p>
+            </div>
+            <div class="dropdown send-right">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="viewMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    View Mode
+                </button>
+                <div id = "select_view" class="dropdown-menu" aria-labelledby="viewMode">
+                    <a id = "pie_select" class="dropdown-item">Pie Chart</a>
+                    <a id = "table_select" class="dropdown-item">Table</a>
+                    <a id = "bar_select" class="dropdown-item">Bar Graph</a>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-md-12 hold-height">
+                    <div id= "chart_div"></div>
+                    <div id = "table_div" class = "top-pad d-none">
+                        <table id = "students_table" class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Garlic?</th>
+                                <th scope="col">Shadow?</th>
+                                <th scope="col">Pale?</th>
+                                <th scope="col">Accent?</th>
+                                <th scope="col">Human/Vampire?</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "container top-line">
+            <div class = "row">
+                <div class = "col-md-11">
+                    <h2>Enter the Student's Information</h2>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="modelMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Models
+                    </button>
+                    <div id = "select_model" class="dropdown-menu" aria-labelledby="viewMode">
+                        <a id = "threshold_select" class="dropdown-item">Threshold based Model</a>
+                        <a id = "random_select" class="dropdown-item">Random Guess Model</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder = "John">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder = "Smith">
+                  </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="form-check">
+                            <b>Does the student like garlic?</b><br>
+                            <div class="radio">
+                                <label><input type="radio" name="garlic" id="garlic_yes" checked>Yes</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="garlic" id="garlic_no">No</label>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="form-check">
+                            <b>Does the student cast a shadow?</b><br>
+                            <div class="radio">
+                                <label><input type="radio" name="shadow" id="shadow_yes" checked>Yes</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="shadow" id="shadow_no">No</label>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="form-check">
+                            <b>Is the student pale?</b><br>
+                            <div class="radio">
+                                <label><input type="radio" name="complexion" id="complexion_yes" checked>Yes</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="complexion" id="complexion_no">No</label>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="form-check">
+                            <b>Does the student have a Transylvanian Accent?</b><br>
+                            <div class="radio">
+                                <label><input type="radio" name="accent" id="accent_yes" checked>Yes</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="accent" id="accent_no">No</label>
+                            </div>
+                        </div>
+                    </div>                
+                </div>                
+            </form>
+            <button id = "add-student-button" class="btn btn-primary">Add Student</button>
+
+        </div>
+    </body>
+</html>
