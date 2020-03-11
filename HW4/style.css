@@ -2,24 +2,39 @@ body {
     background-color: lightcyan;
     padding: 20px;
 }
-h2{
-	text-align: center;
-}
-p {
-	font-weight: bolder;
-}
+
 .bot-line {
     border-bottom: 5px solid black;
 }
+
+.chart-table-padding {
+    padding: 0px 0px 20px 0px;
+}
+
+.title-padding {
+    padding-bottom: 20px;
+}
+
+h2 {
+	text-align: center;
+}
+
 .hold-height {
     min-height: 600px !important;
 }
+
+p {
+	font-weight: bolder;
+}
+
 .send-right {
     text-align:right;
 }
+
 .top-line {
     border-top: 5px solid black;
 }
+
 .top-pad {
     padding-top: 30px;
 }

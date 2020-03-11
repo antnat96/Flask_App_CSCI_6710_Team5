@@ -5,7 +5,7 @@
         <meta charset = "utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!--Bootstrap, jQuery, Google Charts-->
+        <!--Bootstrap, jQuery, Google Charts, custom styles, and JavaScript functions-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -17,26 +17,30 @@
 
     <body>
         <div class = "container bot-line">
-            <h1>Vampires & Students</h1>
-            <div>
-                <p>
-                    This website is for helping determine if a classmate is a vampire.<br/>
-                    We know that Vampires can be found through four main factors, and we have a list below.<br/>
-                    The four main factors that prove that someone is a vampire are a dislike of garlic, a lack of a shadow, a pale complexion, and a Transylvanian accent.<br/>
-                </p>
-            </div>
-            <div class="dropdown send-right">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="viewMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    View Mode
-                </button>
-                <div id = "select_view" class="dropdown-menu" aria-labelledby="viewMode">
-                    <a id = "pie_select" class="dropdown-item">Pie Chart</a>
-                    <a id = "table_select" class="dropdown-item">Table</a>
-                    <a id = "bar_select" class="dropdown-item">Bar Graph</a>
+            <h1 class = "text-center title-padding">Vampires & Students</h1>
+            <div class = "row">
+                <div class = "col-md-8">
+                    <p>
+                        This app helps determine if a classmate is a vampire or a human.<br/>
+                        There are four main indicators that a person is a vampire, and they are: <br/><br/>
+                        1. A dislike of garlic <br/>2. The lack of a shadow <br/>3. A pale complexion and <br/>4. A Transylvanian accent.<br/>
+                    </p>
+                </div>
+                <div class = "col-md-4">
+                    <div class="dropdown send-right">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="viewMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            View Mode
+                        </button>
+                        <div id = "select_view" class="dropdown-menu" aria-labelledby="viewMode">
+                            <a id = "pie_select" class="dropdown-item">Pie Chart</a>
+                            <a id = "table_select" class="dropdown-item">Table</a>
+                            <a id = "bar_select" class="dropdown-item">Bar Graph</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class = "row">
-                <div class = "col-md-12 hold-height">
+                <div class = "col-md-12 hold-height chart-table-padding">
                     <div id= "chart_div"></div>
                     <div id = "table_div" class = "top-pad d-none">
                         <table id = "students_table" class="table table-striped">
@@ -68,7 +72,7 @@
                         Models
                     </button>
                     <div id = "select_model" class="dropdown-menu" aria-labelledby="viewMode">
-                        <a id = "threshold_select" class="dropdown-item">Threshold based Model</a>
+                        <a id = "threshold_select" class="dropdown-item">Threshold-Based Model</a>
                         <a id = "random_select" class="dropdown-item">Random Guess Model</a>
                     </div>
                 </div>

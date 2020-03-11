@@ -18,7 +18,7 @@ $(document).ready(function() {
         data.addColumn('number', 'Number in Class');
         data.addRows([['Vampires', vampires], ['Humans', humans]]);
 
-        var options = {'title':'Vampires & Humans in CSCI 6710', 'width':600, 'height':600, backgroundColor: 'silver'};
+        var options = {'title':'Vampires & Humans in CSCI 6710', 'width':'100%', 'height':600, backgroundColor: 'silver'};
 
         // Instantiate the appropriate type of chart within the chart_div
         if (typeOfChart === "bar_select") {
