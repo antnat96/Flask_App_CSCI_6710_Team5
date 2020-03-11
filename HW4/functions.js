@@ -39,8 +39,17 @@ $(document).ready(function() {
     
     // Handler for the "Add Student" button
     $("#add-student-button").on("click", function() {
-        addStudent();
-        google.charts.setOnLoadCallback(drawChart);
+        // Check if the student has a first and last name
+        let firstNameTest = $("#firstName").val();
+        firstNameTest = firstNameTest.trim();
+        let lastNameTest = $("#lastName").val();
+        lastNameTest = lastNameTest.trim();
+        if (firstNameTest == "" || firstNameTest == null || firstNameTest == undefined || firstNameTest.length < 1) {window.alert("Please enter a first name"); return;}
+        else if (lastNameTest == "" || lastNameTest == null || lastNameTest == undefined || lastNameTest.length < 1) {window.alert("Please enter a last name"); return;}        
+        else {
+            addStudent();
+            google.charts.setOnLoadCallback(drawChart);
+        }
     })
 
     // Purpose: Collect the student's information and add it to the table and chart information
