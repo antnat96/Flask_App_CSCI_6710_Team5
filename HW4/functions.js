@@ -65,6 +65,18 @@ $(document).ready(function() {
         let complexion = ($("#complexion_yes").is(":checked") === true) ? true : false;
         let accent = ($("#accent_yes").is(":checked") === true) ? true : false;
 
+        // Initialize the new row and cells
+        var row = document.getElementById("students_table").insertRow(1);
+        var idCell = row.insertCell(0);
+        var firstNameCell = row.insertCell(1);
+        var lastNameCell = row.insertCell(2);
+        var garlicCell = row.insertCell(3);
+        var shadowCell = row.insertCell(4);
+        var complexionCell = row.insertCell(5);
+        var accentCell = row.insertCell(6);
+        var vampireOrHuman = row.insertCell(7);
+        var deleteCell = row.insertCell(8);
+
         // model selection logic
         if (modelOption == "threshold_select")
         {
@@ -81,6 +93,12 @@ $(document).ready(function() {
                 humans+=1;
                 humanTf = true;
             }
+
+            // Add the appropriate values in the cells
+            garlicCell.innerHTML = (garlic === true) ? "Yes" : "No";
+            shadowCell.innerHTML = (shadow === true) ? "Yes" : "No";
+            complexionCell.innerHTML = (complexion === true) ? "Yes" : "No";
+            accentCell.innerHTML = (accent === true) ? "Yes" : "No";
         }
         else if (modelOption == "random_select")
         {
@@ -93,31 +111,22 @@ $(document).ready(function() {
                 humans+=1;
                 humanTf = true;
             }
+
+            // Let the user know that this individual was generated randomly
+            garlicCell.innerHTML = "Random";
+            shadowCell.innerHTML = "Random";
+            complexionCell.innerHTML = "Random";
+            accentCell.innerHTML = "Random";
         }
 
-        // Add the information to the table
-        var row = document.getElementById("students_table").insertRow(1);
-        var idCell = row.insertCell(0);
-        var firstNameCell = row.insertCell(1);
-        var lastNameCell = row.insertCell(2);
-        var garlicCell = row.insertCell(3);
-        var shadowCell = row.insertCell(4);
-        var complexionCell = row.insertCell(5);
-        var accentCell = row.insertCell(6);
-        var vampireOrHuman = row.insertCell(7);
-        var deleteCell = row.insertCell(8);
+        // Add the appropriate values in the cells
         idCell.innerHTML = "";
         firstNameCell.innerHTML = firstName;
         lastNameCell.innerHTML = lastName;
-        garlicCell.innerHTML = (garlic === true) ? "Yes" : "No";
-        shadowCell.innerHTML = (shadow === true) ? "Yes" : "No";
-        complexionCell.innerHTML = (complexion === true) ? "Yes" : "No";
-        accentCell.innerHTML = (accent === true) ? "Yes" : "No";
         if(humanTf){vampireOrHuman.innerHTML="Human"}
         else{vampireOrHuman.innerHTML="Vampire"}
         deleteCell.innerHTML = "<button class= 'remove-student-button btn btn-primary'>Delete</button>";
 
-        
     }         
 
     // Handle the "Delete" button
