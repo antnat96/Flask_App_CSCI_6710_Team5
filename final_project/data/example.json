@@ -9,14 +9,14 @@
       "location": "Charlotte, NC",
       "airport_code": "CLT",
       "time_local": "0520",
-      "time_zulu": "0920",
+      "time_zulu": "0920"
     },
     "arrival" : {
       "date": "3/22/2020",
       "location": "Memphis, TN",
       "airport_code": "MEM",
       "time_local": "0700",
-      "time_zulu": "1100",
+      "time_zulu": "1100"
     },
     "time" : 1.7,
     "cargo" : {
