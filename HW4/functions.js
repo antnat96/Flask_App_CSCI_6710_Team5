@@ -50,6 +50,7 @@ $(document).ready(function() {
             addStudent();
             google.charts.setOnLoadCallback(drawChart);
             updateIdNumbers();
+            clearInputs();
         }
     })
 
@@ -177,6 +178,12 @@ $(document).ready(function() {
         for (let i = 1, row; row = $("#students_table")[0].rows[i]; i++) {
             $("#students_table")[0].rows[i].cells[0].innerHTML = i.toString();
         }
+    }
+
+    // Clears the first and last name fields
+    function clearInputs() {
+        $("#firstName, #lastName").val("");
+        window.alert("Student successfully added!");
     }
 
 });
