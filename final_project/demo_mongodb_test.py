@@ -1,4 +1,16 @@
-{
+import pymongo
+
+client = pymongo.MongoClient("mongodb+srv://flight-time-logger-app:csci6710team5@anthony-test-tfdgg.gcp.mongodb.net/test?retryWrites=true&w=majority")
+
+db = client["flight-time-logger"]
+
+#print(client.list_database_names())
+
+col = db["info"]
+
+#print(db.list_collection_names())
+
+mydoc = {
     "id": "001",        
     "aircraft": {
       "type": "C-17 Globemaster",
@@ -27,3 +39,11 @@
       "description": "Some cargo description."
     }
   }
+
+x = col.insert_one(mydoc)
+
+print(x.inserted_id)
+
+data = col.find_one()
+
+print(data)
