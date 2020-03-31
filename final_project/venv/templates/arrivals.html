@@ -47,10 +47,30 @@
             </ul>
           </div>        
         </div>
-        <div class = "col-md-9 hold-height">           
+        <div class = "col-md-9 hold-height">
+          <h1>Arrivals</h1>
+          <div id = "table_div" class = "top-pad">
+            <table id = "arrivals_table" class="table table-striped pop">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Arrival Date</th>
+                  <th scope="col">Arrival Location</th>
+                  <th scope="col">Landing Time</th>
+                  <th scope="col">Flight Time</th>
+                  <th scope="col">Cargo Wt</th>
+                  <th scope="col">Cargo Description</th>
+                  <th scope="col">Cargo Pieces</th>
+                  <th scope = "col"></th>
+                </tr>
+              </thead>
+              <tbody id = "arrivals-table-tbody">
+              </tbody>
+            </table>
+          </div>            
         </div>
       </div>
     </div>
-    <!-- <script src = "js/indexFunctions.js"></script> -->
+    <script src = "../static/arrivalsFunctions.js"></script>
   </body>
 </html>
