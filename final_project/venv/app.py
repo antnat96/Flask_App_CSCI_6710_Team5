@@ -1,13 +1,19 @@
 from flask import Flask
+from pymongo import MongoClient
 from flask import render_template
 
 app = Flask(__name__)
+client = MongoClient("mongodb+srv://flight-time-logger-app:csci6710team5@anthony-test-tfdgg.gcp.mongodb.net/test?retryWrites=true&w=majority")
+db = client["flight-time-logger"]
+col = db["info"]
+docs = col.find()
+flights = list(docs)
 
 @app.route("/")
 @app.route("/index")
 @app.route("/all-flights")
 def all_flights():
-    return render_template("index.html")
+    return render_template("index.html", flights=flights)
 
 @app.route("/departures")
 def departures():

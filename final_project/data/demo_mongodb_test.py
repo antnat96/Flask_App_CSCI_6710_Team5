@@ -10,40 +10,33 @@ col = db["info"]
 
 #print(db.list_collection_names())
 
-mydoc = {
-    "id": "001",        
-    "aircraft": {
-      "type": "C-17 Globemaster",
-      "tail_num": "06-0284"
-    },
-    "departure" : {
-      "date": "3/22/2020",
-      "location": "Charlotte, NC",
-      "airport_code": "CLT",
-      "time_local": "0520",
-      "time_zulu": "0920",
-    },
-    "arrival" : {
-      "date": "3/22/2020",
-      "location": "Memphis, TN",
-      "airport_code": "MEM",
-      "time_local": "0700",
-      "time_zulu": "1100",
-    },
-    "time" : 1.7,
-    "cargo" : {
-      "num_of_items": 5,
-      "weight_lbs": 100,
-      "weight_kg": 40,
-      "loading_agents": "Loading Agent 1",
-      "description": "Some cargo description."
-    }
-  }
+#x = col.insert_one(mydoc)
 
-x = col.insert_one(mydoc)
+#print(x.inserted_id)
 
-print(x.inserted_id)
+docs = col.find()
 
-data = col.find_one()
+flights = list(docs)
 
-print(data)
+for flight in flights:
+    print(flight)
+    print("\n")
+#for each doc, create a row
+# for each in docs
+
+
+# # for that doc, print each field
+# print(doc["id"])
+# print(doc["departure_date"])
+# print(doc["departure_location"])
+# print(doc["arrival_date"])
+# print(doc["arrival_location"])
+# print(doc["flight_time"])
+# print(doc["cargo_weight_lbs"])
+# print(doc["aircraft_type"])
+# print(doc["aircraft_tail_num"])
+# for key, value in doc.items():
+#     print(key, "=>", value)
+# for value in data_for_view.values():
+#     print(value)
+        

@@ -66,12 +66,25 @@
                 </tr>
               </thead>
               <tbody id = "flight-table-tbody">
+                {%for flight in flights%}
+                  <tr>
+                    <td>{{ flight["id"] }}</td>
+                    <td>{{ flight["departure_date"] }}</td>
+                    <td>{{ flight["departure_location"] }}</td>
+                    <td>{{ flight["arrival_date"] }}</td>
+                    <td>{{ flight["arrival_location"] }}</td>
+                    <td>{{ flight["flight_time"] }}</td>
+                    <td>{{ flight["cargo_weight_lbs"] }}</td>
+                    <td>{{ flight["aircraft_type"] }}</td>
+                    <td>{{ flight["aircraft_tail_num"] }}</td>
+                  </tr>
+                {%endfor%}
               </tbody>
             </table>
           </div>            
         </div>
       </div>
     </div>
-    <script src = "../static/indexFunctions.js"></script>
+    <!-- <script src = "../static/indexFunctions.js"></script> -->
   </body>
 </html>
