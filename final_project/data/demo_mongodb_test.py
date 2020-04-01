@@ -18,9 +18,7 @@ docs = col.find()
 
 flights = list(docs)
 
-for flight in flights:
-    print(flight)
-    print("\n")
+print(flights[0]["id"])
 #for each doc, create a row
 # for each in docs
 
