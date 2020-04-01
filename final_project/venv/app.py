@@ -47,6 +47,37 @@ def deleteFlight():
     col.delete_one(query)
     return render_template("index.html")
 
+@app.route("/addFlightLogic")
+def addFlightLogic():
+    id = request.args.get("id", "failed", type=str)
+    aircraft_type = request.args.get("aircraft_type", "failed", type=str)
+    aircraft_tail_num = request.args.get("aircraft_tail_num", "failed", type=str)
+    departure_date = request.args.get("departure_date", "failed", type=str)
+    departure_location = request.args.get("departure_location", "failed", type=str)
+    departure_airport_code = request.args.get("departure_airport_code", "failed", type=str)
+    departure_time_local = request.args.get("departure_time_local", "failed", type=str)
+    departure_time_zulu = request.args.get("departure_time_zulu", "failed", type=str)
+    arrival_date = request.args.get("arrival_date", "failed", type=str)
+    arrival_location = request.args.get("arrival_location", "failed", type=str)
+    arrival_airport_code = request.args.get("arrival_airport_code", "failed", type=str)
+    arrival_time_local = request.args.get("arrival_time_local", "failed", type=str)
+    arrival_time_zulu = request.args.get("arrival_time_zulu", "failed", type=str)
+    flight_time = request.args.get("flight_time", 0, type=int)
+    cargo_num_of_items = request.args.get("cargo_num_of_items", 0, type=int)
+    cargo_weight_lbs = request.args.get("cargo_weight_lbs", 0, type=int)
+    cargo_weight_kg = request.args.get("cargo_weight_kg", 0, type=int)
+    cargo_loading_agents = request.args.get("cargo_loading_agents", "failed", type=str)
+    cargo_description = request.args.get("cargo_description", "failed", type=str)
+    mydict = ({"id":id, "aircraft_type":aircraft_type, "aircraft_tail_num":aircraft_tail_num, "departure_date":departure_date,
+        "departure_location":departure_location, "departure_airport_code":departure_airport_code, "departure_time_local":departure_time_local,
+        "departure_time_zulu":departure_time_zulu, "arrival_date":arrival_date, "arrival_location":arrival_location,"arrival_airport_code":arrival_airport_code,
+        "arrival_time_local": arrival_time_local, "arrival_time_zulu":arrival_time_zulu, "flight_time":flight_time, "cargo_num_of_items":cargo_num_of_items, 
+        "cargo_weight_lbs": cargo_weight_lbs, "cargo_weight_kg": cargo_weight_kg, "cargo_loading_agents":cargo_loading_agents,
+        "cargo_description": cargo_description})
+    x = col.insert_one(mydict)
+    print(x.inserted_id)
+    return render_template("addFlight.html")
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico', mimetype='image/vnd.microsoft.icon')
