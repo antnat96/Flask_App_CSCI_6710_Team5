@@ -2,4 +2,4 @@ final_project/venv/__pycache__/
 final_project/venv/Include/
 final_project/venv/Lib/
 final_project/venv/Scripts/
-*.pyvenv.cfg
+final_project/venv/pyvenv.cfg
