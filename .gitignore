@@ -1,4 +1,4 @@
-final_project/venv/__pycache__
-final_project/venv/Include
-final_project/venv/Lib
-final_project/venv/Scripts
+final_project/venv/__pycache__/
+final_project/venv/Include/
+final_project/venv/Lib/
+final_project/venv/Scripts/
