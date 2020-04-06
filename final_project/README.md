@@ -1,6 +1,9 @@
 # Flight Time Logger
 Allows the user to view and update flight time, cargo, and departure information.
 
+## Team Members
+Anthony Natale, Jared Mello, (Oliver) Huan-Yun Chen
+
 ## Usage/Installation
 1. Ensure that the latest version of Python is installed on your machine.
 2. Ensure that PIP is installed on your machine.
