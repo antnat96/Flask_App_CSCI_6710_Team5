@@ -1,13 +1,25 @@
 # Flight Time Logger
 Allows the user to view and update flight time, cargo, and departure information.
 
+## Technologies
+- Flask
+- HTML/Jquery
+- Javascript
+- Mongodb (Atlas google cloud platform)
+
 ## Team Members
 Anthony Natale, Jared Mello, (Oliver) Huan-Yun Chen
 
 ## Usage/Installation
 1. Ensure that the latest version of Python is installed on your machine.
 2. Ensure that PIP is installed on your machine.
-3. Ensure that the PyMongo driver is installed in the Scripts folder on your machine.
-4. Ensure that the dnspython package is installed on your machine.
-5. Clone this repository.
-6. Open index.html in a browser of your choice.
+3. Clone this repository.
+4. Open up a command prompt/terminal in the repository directory
+5. cd into final_project directory
+6. SetUp the python enviroment by following the link (https://flask.palletsprojects.com/en/1.1.x/installation/)
+7. Activate the enviroment after created
+8. Ensure that the Flask package is installed on your machine. "pip install flask"
+9. Ensure that the PyMongo driver is installed in the Scripts folder on your machine. "pip install pymongo"
+10. Ensure that the dnspython package is installed on your machine. "pip install dnspython"
+11. The server is running on default localhost:5000 or 127.0.0.1:5000
+12. Open index.html in a browser of your choice. By typing any of the following url: (localhost:5000, localhost:5000/index, localhost:5000/all-flights)
