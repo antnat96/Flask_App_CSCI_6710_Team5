@@ -103,12 +103,16 @@
         $(".del-flt-btn").on("click", function() {
           let flight_id_to_delete = $(this).attr("id").split("-")[1];
           
-          $.getJSON($SCRIPT_ROOT + '/deleteFlight', {
+          if (confirm("Do you want to delete this record? Click ok do delete the record")) {
+            $.getJSON($SCRIPT_ROOT + '/deleteFlight', {
             id: flight_id_to_delete
-          }, 
-          function(data) {
-            console.log(data);
-          });
+            }, 
+            function(data) {
+              console.log(data);
+            });
+          }
+          
+          
           location.reload();
         });
       });
