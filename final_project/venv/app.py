@@ -24,7 +24,9 @@ def departures():
 
 @app.route("/arrivals")
 def arrivals():
-    return render_template("arrivals.html")
+    docs = col.find()
+    arrivals = list(docs)
+    return render_template("arrivals.html", arrivals=arrivals) 
 
 @app.route("/addFlight")
 def addFlight():

@@ -76,12 +76,23 @@
                 </tr>
               </thead>
               <tbody id = "arrivals-table-tbody">
+                {%for arrival in arrivals%}
+                <tr>
+                  <td>{{ arrival["id"] }}</td>
+                  <td>{{ arrival["arrival_date"] }}</td>
+                  <td>{{ arrival["arrival_location"] }}</td>
+                  <td>{{ arrival["arrival_time_local"] }} Lcl</td>
+                  <td>{{ arrival["flight_time"] }}</td>
+                  <td>{{ arrival["cargo_weight_lbs"] }}</td>
+                  <td>{{ arrival["cargo_description"] }}</td>
+                  <td>{{ arrival["cargo_num_of_items"] }}</td>
+                </tr>
+              {%endfor%}
               </tbody>
             </table>
           </div>            
         </div>
       </div>
     </div>
-    <script src = "../static/arrivalsFunctions.js"></script>
   </body>
 </html>
