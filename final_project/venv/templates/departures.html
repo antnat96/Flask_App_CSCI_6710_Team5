@@ -68,20 +68,30 @@
                   <th scope="col">Departure Date</th>
                   <th scope="col">Departure Location</th>
                   <th scope="col">Takeoff Time</th>
-                  <th scope="col">FlightTime</th>
+                  <th scope="col">Flight Time</th>
                   <th scope="col">Cargo Wt</th>
                   <th scope="col">Cargo Description</th>
                   <th scope="col">Cargo Pieces</th>
-                  <th scope = "col"></th>
                 </tr>
               </thead>
               <tbody id = "departures-table-tbody">
+                {%for departure in departures%}
+                  <tr>
+                    <td>{{ departure["id"] }}</td>
+                    <td>{{ departure["departure_date"] }}</td>
+                    <td>{{ departure["departure_location"] }}</td>
+                    <td>{{ departure["departure_time_local"] }} Lcl</td>
+                    <td>{{ departure["flight_time"] }}</td>
+                    <td>{{ departure["cargo_weight_lbs"] }}</td>
+                    <td>{{ departure["cargo_description"] }}</td>
+                    <td>{{ departure["cargo_num_of_items"] }}</td>
+                  </tr>
+                {%endfor%}
               </tbody>
             </table>
           </div>            
         </div>
       </div>
     </div>
-    <script src = "../static/departuresFunctions.js"></script>
   </body>
 </html>
