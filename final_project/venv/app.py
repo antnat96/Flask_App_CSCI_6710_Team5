@@ -53,6 +53,8 @@ def deleteFlight():
 
 @app.route("/addFlightLogic")
 def addFlightLogic():
+
+    # Insert the document
     id = request.args.get("id", "failed", type=str)
     aircraft_type = request.args.get("aircraft_type", "failed", type=str)
     aircraft_tail_num = request.args.get("aircraft_tail_num", "failed", type=str)
@@ -79,8 +81,13 @@ def addFlightLogic():
         "cargo_weight_lbs": cargo_weight_lbs, "cargo_weight_kg": cargo_weight_kg, "cargo_loading_agents":cargo_loading_agents,
         "cargo_description": cargo_description})
     x = col.insert_one(mydict)
-    print(x.inserted_id)
-    return render_template("addFlight.html")
+
+    # Check if the document was inserted properly by querying the id string
+    rcd = col.find_one({ "id" : id })
+    if rcd["id"] == id:
+        return {"flight_added":"1"}
+    else:
+        return {"flight_added":"0"}
 
 @app.route('/favicon.ico')
 def favicon():

@@ -4,7 +4,7 @@ $(document).ready(function() {
     $("#add-flight-button").on("click", function() {
 
       if (inputIsValid()) {
-        $.getJSON($SCRIPT_ROOT + '/addFlightLogic', {
+        var jqxhr = $.getJSON($SCRIPT_ROOT + '/addFlightLogic', {
           id: Math.random().toString(36).slice(2).substr(0, 5),        
           aircraft_type : $("#aircraftType").val(),
           aircraft_tail_num: $("#tailNumber").val(),
@@ -24,11 +24,24 @@ $(document).ready(function() {
           cargo_weight_kg: $("#weightKilograms").val(),
           cargo_loading_agents: $("#loadingAgents").val(),
           cargo_description: $("#cargoDescription").val()
-        }, 
-        function(data) {
-          console.log(data);
+        })
+        .done(function(data) {
+          if (data.flight_added === "1") {
+            $("#success_modal").modal("show");
+            $("#success_modal").on("hidden.bs.modal", function() {
+              $(":input", "#aircraft-info").val("");
+              $(":input", "#flight-info").val("");
+              $(":input", "#cargo-info").val("");
+            })
+          }
+          else {
+            window.alert("Oops! Something went wrong.");
+          }
+        })
+        .fail(function( jqxhr, textStatus, error ) {
+          var err = textStatus + ", " + error;
+          console.log( "Request Failed: " + err );
         });
-        location.reload();
       }
       else {
         window.alert("Please review your input and make corrections.");
@@ -59,4 +72,5 @@ $(document).ready(function() {
       }
       return true;
     }
+
   });
