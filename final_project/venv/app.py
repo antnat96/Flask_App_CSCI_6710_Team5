@@ -100,8 +100,8 @@ def serachAircraftInfo():
         userQuery = queryList[eachIndex].strip()
         if not userQuery =="": 
             queryDict[columnNames[eachIndex]] =userQuery
+    #print(queryDict)
     result = col.find(queryDict)
-    #result = col.find({"aircraft_type":aircraft_type,"aircraft_tail_num":aircraft_tail_num})
     print(list(result))
     return {"searchResult":list(result)}
 
@@ -143,8 +143,20 @@ def serachCargoInfo():
     cargo_weight_kg = request.args.get("cargo_weight_kg", 0, type=int)
     cargo_loading_agents = request.args.get("cargo_loading_agents", "failed", type=str)
     cargo_description = request.args.get("cargo_description", "failed", type=str)
-
-    return "temp"
+    queryList = [cargo_num_of_items,cargo_weight_lbs,cargo_weight_kg,cargo_loading_agents,cargo_description]
+    columnNames = ['cargo_num_of_items','cargo_weight_lbs','cargo_weight_kg','cargo_loading_agents','cargo_description']
+    queryDict = {}
+    for eachIndex in range(5):
+        if columnNames[eachIndex] == "cargo_loading_agents" or columnNames[eachIndex] == "cargo_description":
+            userQuery = queryList[eachIndex].strip()
+            if not userQuery == "":
+                queryDict[columnNames[eachIndex]] = userQuery
+        else:
+            queryDict[columnNames[eachIndex]] = queryList[eachIndex]
+    #print(queryDict)
+    result = col.find(queryDict)
+    print(list(result))
+    return {"searchResult":list(result)}
 
 @app.route('/favicon.ico')
 def favicon():
