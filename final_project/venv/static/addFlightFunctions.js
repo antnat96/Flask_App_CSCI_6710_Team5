@@ -5,7 +5,7 @@ $(document).ready(function() {
 
       if (inputIsValid()) {
         var jqxhr = $.getJSON($SCRIPT_ROOT + '/addFlightLogic', {
-          id: Math.random().toString(36).slice(2).substr(0, 5),        
+          id: Math.random().toString(36).slice(2).substr(0, 5).toUpperCase(),        
           aircraft_type : $("#aircraftType").val(),
           aircraft_tail_num: $("#tailNumber").val(),
           departure_date : $("#departureDate").val(),
