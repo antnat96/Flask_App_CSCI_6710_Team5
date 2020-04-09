@@ -89,6 +89,23 @@ def addFlightLogic():
     else:
         return {"flight_added":"0"}
 
+@app.route("/serachFlightInfo")
+def serachFlightInfo():
+    print("Searching Flight Info")
+    aircraft_type = request.args.get("aircraft_type", "failed", type=str)
+    aircraft_tail_num = request.args.get("aircraft_tail_num", "failed", type=str)
+    queryList = [aircraft_type,aircraft_tail_num]
+    columnNames = ["aircraft_type","aircraft_tail_num"]
+    queryDict = {}
+    for eachIndex in range(2):
+        userQuery = queryList[eachIndex].strip()
+        if not userQuery =="": 
+            queryDict[columnNames[eachIndex]] =userQuery
+    result = col.find(queryDict)
+    #result = col.find({"aircraft_type":aircraft_type,"aircraft_tail_num":aircraft_tail_num})
+    print(list(result))
+    return {"searchResult":list(result)}
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico', mimetype='image/vnd.microsoft.icon')

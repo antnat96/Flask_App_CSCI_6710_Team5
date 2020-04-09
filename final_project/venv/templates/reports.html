@@ -214,6 +214,9 @@
         </div>
       </div>
     </div>
+    <script type = "text/javascript">
+      $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
     <script src = "../static/reportsFunctions.js"></script>
   </body>
 </html>
