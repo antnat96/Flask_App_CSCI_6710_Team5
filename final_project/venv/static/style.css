@@ -68,3 +68,17 @@ td, th {
 .top-pad {
     padding-top: 30px;
 }
+.flight-row {
+    cursor:pointer;
+}
+.flight-row-highlighted {
+    box-shadow: 3px 3px 4px 1px grey;
+}
+.flight-row-animation {
+    animation-name: flightrow;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes flightrow {
+    100%  {background-color: lightblue}
+}

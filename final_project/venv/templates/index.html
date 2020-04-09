@@ -78,7 +78,7 @@
               </thead>
               <tbody id = "flight-table-tbody">
                 {%for flight in flights%}
-                  <tr>
+                  <tr id = 'flight-row-{{ flight["id"] }}' class = "flight-row">
                     <td>{{ flight["id"] }}</td>
                     <td>{{ flight["departure_date"] }}</td>
                     <td>{{ flight["departure_location"] }}</td>
@@ -95,16 +95,60 @@
             </table>
           </div>            
         </div>
+
+        {%for flight in flights%}
+          <div id = 'flight-modal-{{ flight["id"] }}' class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Flight ID {{ flight["id"] }}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class = "container">
+                    <div class = "row">{{ flight["departure_date"] }}</div>
+                    <div class = "row">{{ flight["departure_time_local"] }} Lcl</div>
+                    <div class = "row">{{ flight["departure_location"] }}</div>
+                    <div class = "row">{{ flight["arrival_date"] }}</div>
+                    <div class = "row">{{ flight["arrival_time_local"] }} Lcl</div>
+                    <div class = "row">{{ flight["arrival_location"] }}</div>
+                    <div class = "row">{{ flight["flight_time"] }}</div>
+                    <div class = "row">{{ flight["cargo_weight_lbs"] }}</div>
+                    <div class = "row">{{ flight["aircraft_type"] }}</div>
+                    <div class = "row">{{ flight["aircraft_tail_num"] }}</div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary add-flight-confirmation-close" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {%endfor%}
+
       </div>
     </div>
     <script type = "text/javascript">
       $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
       $(document).ready(function() {
+
+        $(".flight-row").on("click", function() {
+          $("#flight-modal-" + $(this).prop("id").split("-")[2]).modal("show");
+        })
+
+        $(".flight-row").hover(function() {
+          $(this).closest("tr").addClass("flight-row-animation");
+        }, function() {
+          $(this).closest("tr").removeClass("flight-row-animation");
+        })
+
         $(".del-flt-btn").on("click", function() {
           let flight_id_to_delete = $(this).attr("id").split("-")[1];
           if (confirm("Do you want to delete this record? Click ok do delete the record")) {
             $.getJSON($SCRIPT_ROOT + '/deleteFlight', {
-            id: flight_id_to_delete
+              id: flight_id_to_delete
             }, 
             function(data) {
               console.log(data);
