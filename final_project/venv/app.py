@@ -89,9 +89,8 @@ def addFlightLogic():
     else:
         return {"flight_added":"0"}
 
-@app.route("/serachFlightInfo")
-def serachFlightInfo():
-    print("Searching Flight Info")
+@app.route("/serachAircraftInfo")
+def serachAircraftInfo():
     aircraft_type = request.args.get("aircraft_type", "failed", type=str)
     aircraft_tail_num = request.args.get("aircraft_tail_num", "failed", type=str)
     queryList = [aircraft_type,aircraft_tail_num]
@@ -105,6 +104,47 @@ def serachFlightInfo():
     #result = col.find({"aircraft_type":aircraft_type,"aircraft_tail_num":aircraft_tail_num})
     print(list(result))
     return {"searchResult":list(result)}
+
+@app.route("/serachFlightInfo")
+def serachFlightInfo():
+    print("Searching Flight Info")
+    departure_date = request.args.get("departure_date", "failed", type=str)
+    departure_location = request.args.get("departure_location", "failed", type=str)
+    departure_airport_code = request.args.get("departure_airport_code", "failed", type=str)
+    departure_time_local = request.args.get("departure_time_local", "failed", type=str)
+    departure_time_zulu = request.args.get("departure_time_zulu", "failed", type=str)
+    arrival_date = request.args.get("arrival_date", "failed", type=str)
+    arrival_location = request.args.get("arrival_location", "failed", type=str)
+    arrival_airport_code = request.args.get("arrival_airport_code", "failed", type=str)
+    arrival_time_local = request.args.get("arrival_time_local", "failed", type=str)
+    arrival_time_zulu = request.args.get("arrival_time_zulu", "failed", type=str)
+    flight_time = request.args.get("flight_time", 0, type=int)
+    queryList = [departure_date,departure_location,departure_airport_code,departure_time_local,departure_time_zulu,arrival_date,arrival_location,arrival_airport_code,arrival_time_local,arrival_time_zulu,flight_time]
+    columnNames = ['departure_date','departure_location','departure_airport_code','departure_time_local','departure_time_zulu','arrival_date','arrival_location','arrival_airport_code','arrival_time_local','arrival_time_zulu','flight_time']
+    queryDict = {}
+    for eachIndex in range(11):
+        if not columnNames[eachIndex] == "flight_time":
+           userQuery = queryList[eachIndex].strip()
+           if not userQuery =="":
+                queryDict[columnNames[eachIndex]] = userQuery
+        else:
+            if not queryList[eachIndex] == 0:
+                queryDict[columnNames[eachIndex]] = queryList[eachIndex]
+    #print(queryDict)
+    result = col.find(queryDict)
+    print(list(result))
+    return {"searchResult":list(result)}
+
+@app.route("/serachCargoInfo")
+def serachCargoInfo():
+    print("Searching Cargo Info")
+    cargo_num_of_items = request.args.get("cargo_num_of_items", 0, type=int)
+    cargo_weight_lbs = request.args.get("cargo_weight_lbs", 0, type=int)
+    cargo_weight_kg = request.args.get("cargo_weight_kg", 0, type=int)
+    cargo_loading_agents = request.args.get("cargo_loading_agents", "failed", type=str)
+    cargo_description = request.args.get("cargo_description", "failed", type=str)
+
+    return "temp"
 
 @app.route('/favicon.ico')
 def favicon():
