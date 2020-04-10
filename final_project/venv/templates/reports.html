@@ -65,23 +65,24 @@
               <thead>
                 <tr>
                   <th scope="col">Report Name</th>
-                  <th scope="col">Report Description</th>
+                  <th scope="col">User Query</th>
                   <th scope="col">Report Format</th>
                   <th scope = "col">Download</th>
                 </tr>
               </thead>
               <tbody id = "reports-table-tbody">
-                <tr>
+                {%for report in reportsList%}
+                <tr id='report-row-{{ report["reportId"] }}'>
+                  <td>{{ report["reportName"] }}</td>
+                  <td>{{ report["reportDescrip"] }}</td>
+                  <td>{{ report["reportFormat"] }}</td>
                   <td>
-                  </td>
-                  <td>
-                    Coming Soon!
-                  </td>
-                  <td>
-                  </td>
-                  <td>
+                    <a href='/download/{{ report["reportName"] }}' target="_blank">
+                      Download
+                    </a>
                   </td>
                 </tr>
+                {%endfor%}
               </tbody>
             </table>
           </div>

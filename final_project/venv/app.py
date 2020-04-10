@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request, send_from_directory
+from flask import Flask, jsonify, render_template, request, send_from_directory, send_file
 from pymongo import MongoClient
 import os
 from datetime import datetime
@@ -35,7 +35,21 @@ def addFlight():
 
 @app.route("/reports")
 def reports():
-    return render_template("reports.html")
+    cwd = os.getcwd()
+    reportPath = os.path.join(cwd,"reports")
+    listOfFiles = os.listdir(reportPath)
+    reprotId = 1
+    reportsList = []
+    for eachFile in listOfFiles:
+        currentReportPath = os.path.join(reportPath,eachFile)
+        currentFile = open(currentReportPath,'r')
+        currentReport={'reportName':eachFile,'reportFormat':'json','reportId':reprotId}
+        reprotId+=1
+        for eachLine in currentFile:
+            currentReport['reportDescrip'] = eachLine
+            break
+        reportsList.append(currentReport)
+    return render_template("reports.html",reportsList=reportsList)
 
 @app.route("/ourTeam")
 def ourTeam():
@@ -200,6 +214,12 @@ def serachCargoInfo():
         return {"searchResult":str(len(resultList)),"fileName":fileName}
     else:
         return {"searchResult":"0"}
+
+@app.route('/download/<path:filename>', methods=['GET', 'POST'])
+def download(filename):
+    cwd = os.getcwd()
+    reports = os.path.join(cwd,"reports")
+    return send_from_directory(directory=reports, filename=filename)
 
 @app.route('/favicon.ico')
 def favicon():

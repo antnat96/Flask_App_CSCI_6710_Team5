@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    // Handler for the "Add Flight" button
     $("#search-aircraft-info").on('click',function() {
       var jqxhr = $.getJSON($SCRIPT_ROOT + '/serachAircraftInfo', {
       aircraft_type : $("#aircraftType").val(),
@@ -10,10 +9,11 @@ $(document).ready(function() {
         var fileName = data.fileName;
         $("#result-message").text("Total Records: "+reocrds+", Save as: "+fileName);
         $("#success_modal").modal("show");
+        location.reload();
+        
       })
     })
     
-
     $("#search-flight-info").on('click',function() {
       var jqxhr = $.getJSON($SCRIPT_ROOT + '/serachFlightInfo', {
       departure_date : $("#departureDate").val(),
@@ -33,6 +33,7 @@ $(document).ready(function() {
         var fileName = data.fileName;
         $("#result-message").text("Total Records: "+reocrds+", Save as: "+fileName);
         $("#success_modal").modal("show");
+        location.reload();
       })
     })
 
@@ -49,6 +50,7 @@ $(document).ready(function() {
         var fileName = data.fileName;
         $("#result-message").text("Total Records: "+reocrds+", Save as: "+fileName);
         $("#success_modal").modal("show");
+        location.reload();
       })
     })
   });
