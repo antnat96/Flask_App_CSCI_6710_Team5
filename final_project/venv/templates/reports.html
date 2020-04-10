@@ -85,6 +85,7 @@
               </tbody>
             </table>
           </div>
+          <h1>Search Form</h1>
           <Row>
           <a class="btn btn-primary" data-toggle="collapse" href="#aircraftInfo" role="button" aria-expanded="false" aria-controls="collapseExample" style="color:black;background-color:#dee2e6;border-color:#dee2e6">
             Aircraft Information
@@ -209,11 +210,30 @@
               </form>
               <button id = "search-cargo-info" class="btn btn-primary add-flt-btn">Search</button>
             </div>
-          </div>
-                    
+          </div>    
         </div>
       </div>
     </div>
+
+    <div id = "success_modal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">All Done!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="result-message"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary add-flight-confirmation-close" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script type = "text/javascript">
       $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     </script>

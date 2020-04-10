@@ -5,10 +5,16 @@ $(document).ready(function() {
       aircraft_type : $("#aircraftType").val(),
       aircraft_tail_num: $("#tailNumber").val(),
       })
+      .done(function(data) {
+        var reocrds = data.searchResult;
+        var fileName = data.fileName;
+        $("#result-message").text("Total Records: "+reocrds+", Save as: "+fileName);
+        $("#success_modal").modal("show");
+      })
     })
+    
 
     $("#search-flight-info").on('click',function() {
-      console.log("Search Flight Information");
       var jqxhr = $.getJSON($SCRIPT_ROOT + '/serachFlightInfo', {
       departure_date : $("#departureDate").val(),
       departure_location : $("#departureLocation").val(),
@@ -22,17 +28,27 @@ $(document).ready(function() {
       arrival_time_zulu: $("#arrivalTimeZulu").val(),
       flight_time : $("#flightTime").val()
       })
+      .done(function(data) {
+        var reocrds = data.searchResult;
+        var fileName = data.fileName;
+        $("#result-message").text("Total Records: "+reocrds+", Save as: "+fileName);
+        $("#success_modal").modal("show");
+      })
     })
 
     $("#search-cargo-info").on('click',function() {
-      console.log("Search Cargo Information");
       var jqxhr = $.getJSON($SCRIPT_ROOT + '/serachCargoInfo', {
       cargo_num_of_items: $("#itemsNumber").val(),
       cargo_weight_lbs: $("#weightPounds").val(),
       cargo_weight_kg: $("#weightKilograms").val(),
       cargo_loading_agents: $("#loadingAgents").val(),
       cargo_description: $("#cargoDescription").val()
-        })
+      })
+      .done(function(data) {
+        var reocrds = data.searchResult;
+        var fileName = data.fileName;
+        $("#result-message").text("Total Records: "+reocrds+", Save as: "+fileName);
+        $("#success_modal").modal("show");
+      })
     })
-    
   });

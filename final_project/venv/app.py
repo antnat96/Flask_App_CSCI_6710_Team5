@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, render_template, request, send_from_directory
 from pymongo import MongoClient
 import os
+from datetime import datetime
 
 app = Flask(__name__)
 client = MongoClient("mongodb+srv://flight-time-logger-app:csci6710team5@anthony-test-tfdgg.gcp.mongodb.net/test?retryWrites=true&w=majority")
@@ -53,7 +54,6 @@ def deleteFlight():
 
 @app.route("/addFlightLogic")
 def addFlightLogic():
-
     # Insert the document
     id = request.args.get("id", "failed", type=str)
     aircraft_type = request.args.get("aircraft_type", "failed", type=str)
@@ -91,6 +91,7 @@ def addFlightLogic():
 
 @app.route("/serachAircraftInfo")
 def serachAircraftInfo():
+    print("Searching Aircraft Info")
     aircraft_type = request.args.get("aircraft_type", "failed", type=str)
     aircraft_tail_num = request.args.get("aircraft_tail_num", "failed", type=str)
     queryList = [aircraft_type,aircraft_tail_num]
@@ -100,10 +101,24 @@ def serachAircraftInfo():
         userQuery = queryList[eachIndex].strip()
         if not userQuery =="": 
             queryDict[columnNames[eachIndex]] =userQuery
-    #print(queryDict)
     result = col.find(queryDict)
-    print(list(result))
-    return {"searchResult":list(result)}
+    resultList = list(result)
+    # Check if there is any result if so, write down the report
+    if len(resultList) > 0:
+        cwd = os.getcwd()
+        nowTime = datetime.now()
+        dt_string = nowTime.strftime("%d-%m-%Y-%H-%M-%S")
+        fileName = dt_string+".json"
+        reportPath = os.path.join(cwd,"reports",fileName)
+        report = open(reportPath,"w")
+        report.write("User Query:"+str(queryDict)+"\n")
+        for eachJson in resultList:
+            report.write(str(eachJson))
+            report.write("\n")
+        report.close()
+        return {"searchResult":str(len(resultList)),"fileName":fileName}
+    else:
+        return {"searchResult":"0"}
 
 @app.route("/serachFlightInfo")
 def serachFlightInfo():
@@ -130,10 +145,24 @@ def serachFlightInfo():
         else:
             if not queryList[eachIndex] == 0:
                 queryDict[columnNames[eachIndex]] = queryList[eachIndex]
-    #print(queryDict)
     result = col.find(queryDict)
-    print(list(result))
-    return {"searchResult":list(result)}
+    resultList = list(result)
+    # Check if there is any result if so, write down the report
+    if len(resultList) > 0:
+        cwd = os.getcwd()
+        nowTime = datetime.now()
+        dt_string = nowTime.strftime("%d-%m-%Y-%H-%M-%S")
+        fileName = dt_string+".json"
+        reportPath = os.path.join(cwd,"reports",fileName)
+        report = open(reportPath,"w")
+        report.write("User Query:"+str(queryDict)+"\n")
+        for eachJson in resultList:
+            report.write(str(eachJson))
+            report.write("\n")
+        report.close()
+        return {"searchResult":str(len(resultList)),"fileName":fileName}
+    else:
+        return {"searchResult":"0"}
 
 @app.route("/serachCargoInfo")
 def serachCargoInfo():
@@ -153,10 +182,24 @@ def serachCargoInfo():
                 queryDict[columnNames[eachIndex]] = userQuery
         else:
             queryDict[columnNames[eachIndex]] = queryList[eachIndex]
-    #print(queryDict)
     result = col.find(queryDict)
-    print(list(result))
-    return {"searchResult":list(result)}
+    resultList = list(result)
+    # Check if there is any result if so, write down the report
+    if len(resultList) > 0:
+        cwd = os.getcwd()
+        nowTime = datetime.now()
+        dt_string = nowTime.strftime("%d-%m-%Y-%H-%M-%S")
+        fileName = dt_string+".json"
+        reportPath = os.path.join(cwd,"reports",fileName)
+        report = open(reportPath,"w")
+        report.write("User Query:"+str(queryDict)+"\n")
+        for eachJson in resultList:
+            report.write(str(eachJson))
+            report.write("\n")
+        report.close()
+        return {"searchResult":str(len(resultList)),"fileName":fileName}
+    else:
+        return {"searchResult":"0"}
 
 @app.route('/favicon.ico')
 def favicon():
