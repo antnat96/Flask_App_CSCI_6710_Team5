@@ -10,6 +10,10 @@ Choose the assignment folder you would like to view and follow instructions on t
 
 Anthony Natale, (Oliver) Huan-Yun Chen, and Jared Mello.
 
+## Emails
+
+natalea20@students.ecu.edu, chenh15@students.ecu.edu, melloj20@students.ecu.edu
+
 ## License
 
 MIT License - see LICENSE.md
