@@ -181,9 +181,9 @@ def searchFlightInfo():
 @app.route("/searchCargoInfo")
 def searchCargoInfo():
     print("Searching Cargo Info")
-    cargo_num_of_items = request.args.get("cargo_num_of_items", 0, type=int)
-    cargo_weight_lbs = request.args.get("cargo_weight_lbs", 0, type=int)
-    cargo_weight_kg = request.args.get("cargo_weight_kg", 0, type=int)
+    cargo_num_of_items = request.args.get("cargo_num_of_items", "", type=int)
+    cargo_weight_lbs = request.args.get("cargo_weight_lbs", "", type=int)
+    cargo_weight_kg = request.args.get("cargo_weight_kg", "", type=int)
     cargo_loading_agents = request.args.get("cargo_loading_agents", "failed", type=str)
     cargo_description = request.args.get("cargo_description", "failed", type=str)
     queryList = [cargo_num_of_items,cargo_weight_lbs,cargo_weight_kg,cargo_loading_agents,cargo_description]
@@ -195,7 +195,9 @@ def searchCargoInfo():
             if not userQuery == "":
                 queryDict[columnNames[eachIndex]] = userQuery
         else:
-            queryDict[columnNames[eachIndex]] = queryList[eachIndex]
+            if not queryList[eachIndex] == "":
+                queryDict[columnNames[eachIndex]] = queryList[eachIndex]
+        
     result = col.find(queryDict)
     resultList = list(result)
     # Check if there is any result if so, write down the report
