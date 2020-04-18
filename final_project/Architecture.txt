@@ -1,8 +1,0 @@
-Architecture: Flask web app framework
-Front-End: HTML/CSS/JS/jQuery, Bootstrap
-Back-End: Python
-Database: MongoDB Atlas on Google Cloud
-
-Motivation: Loadmaster in NC Air National Guard, need to track flight times and details for reporting
-
-Features: All flights, modals with details, ability to delete, arrivals, departures, reports-can run queries against previously inputted info & returns JSON docs with info. 

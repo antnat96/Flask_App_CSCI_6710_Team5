@@ -11,8 +11,17 @@ Allows the user to view and update flight time, cargo, and departure information
 Anthony Natale, Jared Mello, (Oliver) Huan-Yun Chen
 
 ## Emails
-
 natalea20@students.ecu.edu, melloj20@students.ecu.edu, chenh15@students.ecu.edu
+
+## Architecture
+Architecture: Flask web app framework
+Front-End: HTML/CSS/JS/jQuery, Bootstrap
+Back-End: Python
+Database: MongoDB Atlas on Google Cloud
+
+Motivation: Loadmaster in NC Air National Guard, need to track flight times and details for reporting
+
+Features: All flights, modals with details, ability to delete, arrivals, departures, reports-can run queries against previously inputted info & returns JSON docs with info. 
 
 ## Usage/Installation
 1. Ensure that the latest version of Python is installed on your machine.
