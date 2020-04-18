@@ -5,12 +5,13 @@ $(document).ready(function() {
       aircraft_tail_num: $("#tailNumber").val(),
       })
       .done(function(data) {
-        var reocrds = data.searchResult;
+        var records = data.searchResult;
         var fileName = data.fileName;
-        $("#result-message").text("Total Records: "+reocrds+", Save as: "+fileName);
+        $("#result-message").text("Total Records: "+records+", Saved As: "+fileName);
         $("#success_modal").modal("show");
-        location.reload();
-        
+        $("#success_modal").on("hidden.bs.modal", function() {
+          location.reload();
+        })
       })
     })
     
@@ -29,11 +30,13 @@ $(document).ready(function() {
       flight_time : $("#flightTime").val()
       })
       .done(function(data) {
-        var reocrds = data.searchResult;
+        var records = data.searchResult;
         var fileName = data.fileName;
-        $("#result-message").text("Total Records: "+reocrds+", Save as: "+fileName);
+        $("#result-message").text("Total Records: "+records+", Saved As: "+fileName);
         $("#success_modal").modal("show");
-        location.reload();
+        $("#success_modal").on("hidden.bs.modal", function() {
+          location.reload();
+        })
       })
     })
 
@@ -46,11 +49,13 @@ $(document).ready(function() {
       cargo_description: $("#cargoDescription").val()
       })
       .done(function(data) {
-        var reocrds = data.searchResult;
+        var records = data.searchResult;
         var fileName = data.fileName;
-        $("#result-message").text("Total Records: "+reocrds+", Save as: "+fileName);
+        $("#result-message").text("Total Records: "+records+", Saved As: "+fileName);
         $("#success_modal").modal("show");
-        location.reload();
+        $("#success_modal").on("hidden.bs.modal", function() {
+          location.reload();
+        })
       })
     })
   });
