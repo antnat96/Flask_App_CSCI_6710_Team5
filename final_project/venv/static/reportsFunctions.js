@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $("#search-aircraft-info").on('click',function() {
-      var jqxhr = $.getJSON($SCRIPT_ROOT + '/serachAircraftInfo', {
+      var jqxhr = $.getJSON($SCRIPT_ROOT + '/searchAircraftInfo', {
       aircraft_type : $("#aircraftType").val(),
       aircraft_tail_num: $("#tailNumber").val(),
       })
@@ -15,7 +15,7 @@ $(document).ready(function() {
     })
     
     $("#search-flight-info").on('click',function() {
-      var jqxhr = $.getJSON($SCRIPT_ROOT + '/serachFlightInfo', {
+      var jqxhr = $.getJSON($SCRIPT_ROOT + '/searchFlightInfo', {
       departure_date : $("#departureDate").val(),
       departure_location : $("#departureLocation").val(),
       departure_airport_code : $("#departureAirportCode").val(),
@@ -38,7 +38,7 @@ $(document).ready(function() {
     })
 
     $("#search-cargo-info").on('click',function() {
-      var jqxhr = $.getJSON($SCRIPT_ROOT + '/serachCargoInfo', {
+      var jqxhr = $.getJSON($SCRIPT_ROOT + '/searchCargoInfo', {
       cargo_num_of_items: $("#itemsNumber").val(),
       cargo_weight_lbs: $("#weightPounds").val(),
       cargo_weight_kg: $("#weightKilograms").val(),

@@ -103,8 +103,8 @@ def addFlightLogic():
     else:
         return {"flight_added":"0"}
 
-@app.route("/serachAircraftInfo")
-def serachAircraftInfo():
+@app.route("/searchAircraftInfo")
+def searchAircraftInfo():
     print("Searching Aircraft Info")
     aircraft_type = request.args.get("aircraft_type", "failed", type=str)
     aircraft_tail_num = request.args.get("aircraft_tail_num", "failed", type=str)
@@ -134,8 +134,8 @@ def serachAircraftInfo():
     else:
         return {"searchResult":"0"}
 
-@app.route("/serachFlightInfo")
-def serachFlightInfo():
+@app.route("/searchFlightInfo")
+def searchFlightInfo():
     print("Searching Flight Info")
     departure_date = request.args.get("departure_date", "failed", type=str)
     departure_location = request.args.get("departure_location", "failed", type=str)
@@ -178,8 +178,8 @@ def serachFlightInfo():
     else:
         return {"searchResult":"0"}
 
-@app.route("/serachCargoInfo")
-def serachCargoInfo():
+@app.route("/searchCargoInfo")
+def searchCargoInfo():
     print("Searching Cargo Info")
     cargo_num_of_items = request.args.get("cargo_num_of_items", 0, type=int)
     cargo_weight_lbs = request.args.get("cargo_weight_lbs", 0, type=int)
