@@ -25,5 +25,7 @@ natalea20@students.ecu.edu, melloj20@students.ecu.edu, chenh15@students.ecu.edu
 8. Ensure that the Flask package is installed on your machine. "pip install flask"
 9. Ensure that the PyMongo driver is installed in the Scripts folder on your machine. "pip install pymongo"
 10. Ensure that the dnspython package is installed on your machine. "pip install dnspython"
-11. The server is running on default localhost:5000 or 127.0.0.1:5000
-12. Open index.html in a browser of your choice. By typing any of the following url: (localhost:5000, localhost:5000/index, localhost:5000/all-flights)
+11. Move the static and templates folders and the app.py file into the virtual environment directory just created
+12. Run "flask run" in the terminal while in the virtual environment
+12. The server is running on default localhost:5000 or 127.0.0.1:5000
+13. Open index.html in a browser of your choice by typing any of the following urls: (localhost:5000, localhost:5000/index, localhost:5000/all-flights)
