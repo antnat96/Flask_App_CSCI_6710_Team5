@@ -20,8 +20,8 @@
         <div class = "col-md-3 sidenav-container sidebar-min-width">
           <div id = "sidebar-div" class="sidebar-sticky">
             <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="index">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index">
                         All Flights
                     </a>
                 </li>
@@ -65,14 +65,14 @@
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Departure<br>Date</th>
-                  <th scope="col">Departure<br>Location</th>
-                  <th scope="col">Arrival<br>Date</th>
-                  <th scope="col">Arrival<br>Location</th>
-                  <th scope="col">Flight<br>Time</th>
-                  <th scope="col">Cargo Wt<br>(Lbs)</th>
-                  <th scope="col">Aircraft<br>Type</th>
-                  <th scope="col">Tail<br>Number</th>
+                  <th scope="col">Dep. Date</th>
+                  <th scope="col">Dep. Location</th>
+                  <th scope="col">Arrival Date</th>
+                  <th scope="col">Arrival Location</th>
+                  <th scope="col">Flt Time</th>
+                  <th scope="col">Cargo Wt (Lbs)</th>
+                  <th scope="col">Acft Type</th>
+                  <th scope="col">Tail Number</th>
                   <th scope = "col"></th>
                 </tr>
               </thead>
@@ -88,7 +88,7 @@
                     <td>{{ flight["cargo_weight_lbs"] }}</td>
                     <td>{{ flight["aircraft_type"] }}</td>
                     <td>{{ flight["aircraft_tail_num"] }}</td>
-                    <td><button id = 'delete-{{ flight["id"] }}' class = 'btn btn-primary del-flt-btn'>Delete</button></td>
+                    <td><button id = 'delete-{{ flight["id"] }}' class = 'btn btn-primary del-flt-btn btn-sm'>Delete</button></td>
                   </tr>
                 {%endfor%}
               </tbody>
