@@ -60,6 +60,8 @@
         </div>
         <div class = "col-md-9 hold-height">
           <h1>All Flights</h1>
+          To edit a flight record, select the record and hover over the field you would like to change.
+          <br>
           <div id = "table_div" class = "top-pad">
             <table id = "flights_table" class="table table-striped pop">
               <thead>
@@ -112,7 +114,7 @@
                       <div class = "col-md-6">
                         Aircraft Type:
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "aircraft_type-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["aircraft_type"] }}
                       </div>
                     </div>
@@ -120,7 +122,7 @@
                       <div class = "col-md-6">
                         Tail Number:
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "aircraft_tail_num-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["aircraft_tail_num"] }}
                       </div>
                     </div>
@@ -128,7 +130,7 @@
                       <div class = "col-md-6">
                         Departure Date:
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "departure_date-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["departure_date"] }}
                       </div>
                     </div>
@@ -136,7 +138,7 @@
                       <div class = "col-md-6">
                         Departure Time (Local):
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "departure_time_local-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["departure_time_local"] }}
                       </div>
                     </div>
@@ -144,7 +146,7 @@
                       <div class = "col-md-6">
                         Departure Time (Zulu):
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "departure_time_zulu-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["departure_time_zulu"] }}
                       </div>
                     </div>
@@ -152,7 +154,7 @@
                       <div class = "col-md-6">
                         Departure Location:
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "departure_location-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["departure_location"] }}
                       </div>
                     </div>
@@ -160,7 +162,7 @@
                       <div class = "col-md-6">
                         Departure Airport Code:
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "departure_airport_code-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["departure_airport_code"] }}
                       </div>
                     </div>
@@ -168,7 +170,7 @@
                       <div class = "col-md-6">
                         Arrival Date:
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "arrival_date-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["arrival_date"] }}
                       </div>
                     </div>
@@ -176,7 +178,7 @@
                       <div class = "col-md-6">
                         Arrival Time (Local):
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "arrival_time_local-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["arrival_time_local"] }}
                       </div>
                     </div>
@@ -184,7 +186,7 @@
                       <div class = "col-md-6">
                         Arrival Time (Zulu):
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "arrival_time_zulu-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["arrival_time_zulu"] }}
                       </div>
                     </div>
@@ -192,7 +194,7 @@
                       <div class = "col-md-6">
                         Arrival Location:
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "arrival_location-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["arrival_location"] }}
                       </div>
                     </div>
@@ -200,7 +202,7 @@
                       <div class = "col-md-6">
                         Arrival Airport Code:
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "arrival_airport_code-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["arrival_airport_code"] }}
                       </div>
                     </div>
@@ -208,7 +210,7 @@
                       <div class = "col-md-6">
                         Flight Time:
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "flight_time-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["flight_time"] }}
                       </div>
                     </div>
@@ -216,7 +218,7 @@
                       <div class = "col-md-6">
                         Items of Cargo:
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "cargo_num_of_items-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["cargo_num_of_items"] }}
                       </div>
                     </div>
@@ -224,7 +226,7 @@
                       <div class = "col-md-6">
                         Cargo Weight (Lbs):
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "cargo_weight_lbs-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["cargo_weight_lbs"] }}
                       </div>
                     </div>
@@ -232,7 +234,7 @@
                       <div class = "col-md-6">
                         Cargo Weight (Kg):
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "cargo_weight_kg-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["cargo_weight_kg"] }}
                       </div>
                     </div>
@@ -240,7 +242,7 @@
                       <div class = "col-md-6">
                         Loading Agents:
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "cargo_loading_agents-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["cargo_loading_agents"] }}
                       </div>
                     </div>
@@ -248,7 +250,7 @@
                       <div class = "col-md-6">
                         Cargo Description:
                       </div>
-                      <div class = "col-md-6">
+                      <div id = "cargo_description-{{ flight['id'] }}" class = "col-md-6 editable-div">
                         {{ flight["cargo_description"] }}
                       </div>
                     </div>
@@ -267,6 +269,7 @@
     <script type = "text/javascript">
       $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
       $(document).ready(function() {
+        let currentData = "";
 
         $(".flight-row").on("click", function() {
           $("#flight-modal-" + $(this).prop("id").split("-")[2]).modal("show");
@@ -278,6 +281,58 @@
           $(this).closest("tr").removeClass("flight-row-animation");
         })
 
+        $(".editable-div").hover(function() {
+          // Get current data
+          startData = $(this).text().trim();
+          // Set the innerHTML to an empty string for now
+          $(this).text("");
+          // Create new input element
+          let newInput = document.createElement("input");
+          // Give it its type and class
+          newInput.setAttribute("type", "textarea");
+          newInput.setAttribute("id", "current-edit");
+          // Set its text content
+          newInput.setAttribute("value", startData);
+          // Add it
+          $(this).append(newInput);
+
+        }, 
+        // On hover out
+        function() {
+          // Capture the input
+          let newData = $("#current-edit").val().trim(); 
+          // If new input is different, mark the div with a changed class
+          if (newData !== startData) {
+            saveData($(this).attr("id").split("-")[0], $(this).attr("id").split("-")[1], newData);
+          }        
+          // Remove the input field 
+          $("#current-edit").remove();
+          // Set the text to the changed text
+          $(this).text(newData);
+        })
+
+        function saveData(field, flightId, newData) {
+
+          $.getJSON($SCRIPT_ROOT + '/editFlight', {
+            id: flightId,
+            field: field,
+            newData: newData
+          }, 
+          function(data) {
+            if (data.updated === "1") {
+              $("#" + field + "-" + flightId).addClass("changed");
+            }
+            else {
+              $("#" + field + "-" + flightId).addClass("failed");
+            }
+          });
+          
+          $("#flight-modal-" + flightId).on("hidden.bs.modal", function() {
+            location.reload();
+          })
+
+        }
+
         $(".del-flt-btn").on("click", function() {
           $(".flight-row").off("click"); // Prevents event listener on table row from firing
           let flight_id_to_delete = $(this).attr("id").split("-")[1];
@@ -286,7 +341,7 @@
               id: flight_id_to_delete
             }, 
             function(data) {
-              console.log(data);
+              //console.log(data);
             });
           }
           location.reload();

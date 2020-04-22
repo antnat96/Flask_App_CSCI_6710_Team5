@@ -226,3 +226,19 @@ def download(filename):
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+@app.route("/editFlight")
+def editFlight():
+    id = request.args.get("id", "failed", type=str)
+    field = request.args.get("field", "failed", type=str)
+    newData = request.args.get("newData", "failed", type=str)
+    myQuery = {"id":id}
+    myData = {"$set": {field:newData}}
+    col.update_one(myQuery, myData)
+
+    # Check if record properly updated and return 1 if so
+    check = col.find_one(myQuery)
+    if check[field] == newData:
+        return {"updated":"1"}
+    else:
+        return {"updated":"0"}

@@ -17,6 +17,9 @@ body {
 .c130-text {
     font-size: 12px;
 }
+.changed {
+    border: 2px solid green;
+}
 .cargo-desc {
     min-height: 100px;
 }
@@ -26,6 +29,9 @@ body {
 .flight-form {
     padding-left: 8px;
     padding-right: 8px;
+}
+.failed {
+    border: 2px solid red;
 }
 header, main, footer {
     padding-left: 300px;
