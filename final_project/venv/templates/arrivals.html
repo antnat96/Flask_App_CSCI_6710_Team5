@@ -64,15 +64,14 @@
             <table id = "arrivals_table" class="table table-striped pop">
               <thead>
                 <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Arrival Date</th>
-                  <th scope="col">Arrival Location</th>
-                  <th scope="col">Landing Time</th>
-                  <th scope="col">Flt Time</th>
-                  <th scope="col">Cargo Wt</th>
-                  <th scope="col">Cargo Description</th>
-                  <th scope="col">Cargo Pieces</th>
-                  <th scope = "col"></th>
+                  <th id = "col-id" scope="col">ID</th>
+                  <th id = "col-arr-date" scope="col">Arrival Date</th>
+                  <th id = "col-arr-location" scope="col">Arrival Location</th>
+                  <th id = "col-land-time" scope="col">Landing Time</th>
+                  <th id = "col-flt-time" scope="col">Flt Time</th>
+                  <th id = "col-cargo-wt" scope="col">Cargo Wt</th>
+                  <th id = "col-cargo-descri" scope="col">Cargo Description</th>
+                  <th id = "col-cargo-pieces" scope="col">Cargo Pieces</th>
                 </tr>
               </thead>
               <tbody id = "arrivals-table-tbody">
@@ -262,20 +261,6 @@
       </div>
     </div>
 
-    <script type = "text/javascript">
-      $(document).ready(function() {
-
-        $(".flight-row").on("click", function() {
-          $("#flight-modal-" + $(this).prop("id").split("-")[2]).modal("show");
-        })
-
-        $(".flight-row").hover(function() {
-          $(this).closest("tr").addClass("flight-row-animation");
-        }, function() {
-          $(this).closest("tr").removeClass("flight-row-animation");
-        })
-      });
-    </script>
-
+    <script src = "../static/arrivalsFunction.js"></script>
   </body>
 </html>
