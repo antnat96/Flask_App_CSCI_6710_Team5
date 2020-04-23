@@ -20,6 +20,9 @@ body {
 .changed {
     border: 2px solid green;
 }
+th {
+    cursor:pointer !important;
+}
 .cargo-desc {
     min-height: 100px;
 }

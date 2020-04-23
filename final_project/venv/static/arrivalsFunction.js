@@ -47,42 +47,42 @@ $(document).ready(function() {
   }
 
   $("#col-id").on("click",function(){
-    console.log("Sorting by col-id");
+    // console.log("Sorting by col-id");
     sortTable(0)
   });
   
   $("#col-arr-date").on("click",function(){
-    console.log("Sorting by col-arr-date");
+    // console.log("Sorting by col-arr-date");
     sortTable(1)
   });
   
   $("#col-arr-location").on("click",function(){
-    console.log("Sorting by col-arr-location");
+    // console.log("Sorting by col-arr-location");
     sortTable(2)
   });
   
   $("#col-land-time").on("click",function(){
-    console.log("Sorting by col-land-time");
+    // console.log("Sorting by col-land-time");
     sortTable(3)
   });
   
   $("#col-flt-time").on("click",function(){
-    console.log("Sorting by col-flt-time");
+    // console.log("Sorting by col-flt-time");
     sortTable(4)
   });
   
   $("#col-cargo-wt").on("click",function(){
-    console.log("Sorting by col-cargo-wt");
+    // console.log("Sorting by col-cargo-wt");
     sortTable(5)
   });
   
   $("#col-cargo-descri").on("click",function(){
-    console.log("Sorting by col-cargo-descri");
+    // console.log("Sorting by col-cargo-descri");
     sortTable(6)
   });
   
   $("#col-cargo-pieces").on("click",function(){
-    console.log("Sorting by col-cargo-pieces");
+    // console.log("Sorting by col-cargo-pieces");
     sortTable(7)
   });
 });

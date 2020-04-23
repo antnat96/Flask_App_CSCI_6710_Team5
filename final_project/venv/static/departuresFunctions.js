@@ -46,42 +46,42 @@ $(document).ready(function() {
   }
   
   $("#col-id").on("click",function(){
-    console.log("Sorting by col-id");
+    // console.log("Sorting by col-id");
     sortTable(0)
   });
 
   $("#col-dep-date").on("click",function(){
-    console.log("Sorting by col-dep-date");
+    // console.log("Sorting by col-dep-date");
     sortTable(1)
   });
   
   $("#col-dep-location").on("click",function(){
-    console.log("Sorting by col-dep-location");
+    // console.log("Sorting by col-dep-location");
     sortTable(2)
   });
 
   $("#col-takeoff").on("click",function(){
-    console.log("Sorting by col-takeoff");
+    // console.log("Sorting by col-takeoff");
     sortTable(3)
   });
   
   $("#col-flt-time").on("click",function(){
-    console.log("Sorting by col-flt-time");
+    // console.log("Sorting by col-flt-time");
     sortTable(4)
   });
   
   $("#col-cargo-wt").on("click",function(){
-    console.log("Sorting by col-cargo-wt");
+    // console.log("Sorting by col-cargo-wt");
     sortTable(5)
   });
   
   $("#col-cargo-descri").on("click",function(){
-    console.log("Sorting by col-cargo-descri");
+    // console.log("Sorting by col-cargo-descri");
     sortTable(6)
   });
   
   $("#col-cargo-pieces").on("click",function(){
-    console.log("Sorting by col-cargo-pieces");
+    // console.log("Sorting by col-cargo-pieces");
     sortTable(7)
   });
 });

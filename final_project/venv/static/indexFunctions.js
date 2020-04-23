@@ -110,47 +110,47 @@ $(document).ready(function() {
     }
   }
   $("#col-id").on("click",function(){
-    console.log("Sorting by col-id");
+    // console.log("Sorting by col-id");
     sortTable(0)
   });
 
   $("#col-dep-date").on("click",function(){
-    console.log("Sorting by col-dep-date");
+    // console.log("Sorting by col-dep-date");
     sortTable(1)
   });
   
   $("#col-dep-location").on("click",function(){
-    console.log("Sorting by col-dep-location");
+    // console.log("Sorting by col-dep-location");
     sortTable(2)
   });
 
   $("#col-arr-date").on("click",function(){
-    console.log("Sorting by col-arr-date");
+    // console.log("Sorting by col-arr-date");
     sortTable(3)
   });
 
   $("#col-arr-location").on("click",function(){
-    console.log("Sorting by col-arr-location");
+    // console.log("Sorting by col-arr-location");
     sortTable(4)
   });
 
   $("#col-flt-time").on("click",function(){
-    console.log("Sorting by col-flt-time");
+    // console.log("Sorting by col-flt-time");
     sortTable(5)
   });
 
   $("#col-cargo-wt").on("click",function(){
-    console.log("Sorting by col-cargo-wt");
+    // console.log("Sorting by col-cargo-wt");
     sortTable(6)
   });
 
   $("#col-acft-type").on("click",function(){
-    console.log("Sorting by col-acft-type");
+    // console.log("Sorting by col-acft-type");
     sortTable(7)
   });
 
   $("#col-tail-num").on("click",function(){
-    console.log("Sorting by col-tail-num");
+    // console.log("Sorting by col-tail-num");
     sortTable(8)
   });
 });
