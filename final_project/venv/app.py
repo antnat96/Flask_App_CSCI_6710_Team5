@@ -5,8 +5,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 client = MongoClient("mongodb+srv://flight-time-logger-app:csci6710team5@anthony-test-tfdgg.gcp.mongodb.net/test?retryWrites=true&w=majority")
-db = client["flight-time-logger"]
-col = db["info"]
+db = client["production"]
+col = db["production"]
 
 
 @app.route("/")
