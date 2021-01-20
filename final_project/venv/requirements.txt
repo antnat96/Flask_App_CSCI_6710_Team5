@@ -1,8 +1,8 @@
-1.	The application will display a table of information related to aircraft flights and cargo.
-2.	The application will maintain records of the individuals that loaded the aircraft.
-3.	The application will allow the user to add and remove individual flight records.
-4.	The application will store the flight record data in a model that is accessible by the application and capable of manipulation and quick access.
-5.	The application will allow for basic record sorting, such as chronological, alphabetical, or numerical sort functions.
-6.	Potential fields that will be recorded and displayed by the application will be flight ID numbers, aircraft tail numbers, aircraft types, departure locations, departure airport codes departure times, arrival locations, arrival times, arrival airport codes, cargo descriptions, and cargo weights.
-7.	The user will be able to search through the flights using various keywords, and the search will return relevant results.
-8.	Inputted flight information will be validated to ensure data integrity.
+click==7.1.2
+dnspython==2.1.0
+Flask==1.1.2
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+pymongo==3.11.2
+Werkzeug==1.0.1
